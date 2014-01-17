@@ -18,9 +18,11 @@
         },
 
         render: function () {
+            debugger;
+
             this.$el.attr("data-view", "overview");
 
-            var viewModel = _.extend({ });
+            var viewModel = _.extend(this.model);
 
             this.$el.html(this.template(viewModel));
 

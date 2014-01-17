@@ -1,16 +1,17 @@
-﻿<form method="POST">
+﻿<form method="POST" action="/new-bill">
     <fieldset>
         <legend>Новое объявление</legend>
 
         <label for="Title">Заголовок</label>
-        <input id="Title" name="title" type="text" class="input-xxlarge" placeholder="Введите заголовок…" />
+        <input id="Title" name="title" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" placeholder="Введите заголовок…" />
 
         <label for="Content">Текст</label>
-        <textarea id="Content" name="content" rows="10" class="input-xxlarge"></textarea>
+        <textarea id="Content" name="content" rows="10" value="<%=this.model.get('message') %>" class="input-xxlarge"></textarea>
 
-        <label for="Tag">Тэги</label>
-        <input id="Tag" type="text" class="input-xxlarge" placeholder="Введите тэг…" />
-        <div id="Tags" class="tags"></span>
+        <label for="Tag">Ключевые слова</label>
+        <input id="Tag" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />
+        <div id="Tags" class="tags"></div>
+        <input id="TagsConcated" name="tags" type="hidden" value="<%=this.model.get('tags') %>" />
     </fieldset>
 
     <button type="submit" class="btn btn-primary">Опубликовать</button>

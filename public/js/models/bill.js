@@ -4,7 +4,13 @@
 ], function ($, Backbone) {
 
     var TagModel = Backbone.Model.extend({
-        //idAttribute: "tagID"
+        //idAttribute: "billID",
+
+        defaults: {
+            title: "",
+            message: "",
+            tags: ""
+        }
     });
 
     return TagModel;

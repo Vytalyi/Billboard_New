@@ -1,4 +1,5 @@
-var tags = require('./tags');
+var tags = require('./tags')
+    , bills = require('./bills');
 
 var routerAPI = {
 
@@ -6,12 +7,17 @@ var routerAPI = {
 		this.app = app;
 
         tags.init(); // populate tags
-	
+        bills.init(); // populate bills
+
+        /* existing pages */
 		app.get('/', this.getIndex);
         app.get('/overview', this.getIndex);
         app.get('/new-bill', this.getIndex);
 
+        /* respond with JSON */
 		app.get('/tags', tags.getAll);
+        app.get('/bills', bills.getRecent);
+        app.post('/new-bill', bills.create);
 	},
 
 	getIndex: function (req, res) {

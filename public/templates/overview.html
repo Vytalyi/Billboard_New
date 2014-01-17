@@ -1,3 +1,11 @@
 ﻿<div>
-    Start page
+    <% _.each(this.model, function(item) { %>
+        <div>
+            <div>title: <%= item.get("title") %></div>
+            <div>message: <%= item.get("message") %></div>
+            <div>tags: <%= item.get("tags") %></div>
+            <div>date: <%= item.get("createdDate") %></div>
+        </div>
+    <br/>
+    <% }); %>
 </div>

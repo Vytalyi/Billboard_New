@@ -6,8 +6,10 @@
 
     /* Custom resources */
     'models/tag',
-    'models/tag-collection'
-], function ($, _, Backbone, TagModel, TagCollection) {
+    'models/tag-collection',
+    'models/bill',
+    'models/bill-collection'
+], function ($, _, Backbone, TagModel, TagCollection, BillModel, BillCollection) {
 
     /* Code below is for processing tags model/collection */
     var _tags = null,
@@ -27,6 +29,18 @@
         }
     /* -------------------------------------------------- */
 
+    /* Code below is for processing tags model/collection */
+    var _getRecentBills = function _getRecentBills(callback) {
+        var _bills = new BillCollection();
+        _bills.fetch({
+            success: function (response, models) {
+                callback(response.models);
+            }
+        })
+    }
+    /* -------------------------------------------------- */
+
+
     var AppRouter = Backbone.Router.extend({
         routes: {
             "": "index",
@@ -41,15 +55,22 @@
 
         overview: function () {
             require(["views/overview"], function (OverviewView) {
-                var contentView = new OverviewView();
-                contentView.render();
+                _getRecentBills(function(bills) {
+                    var contentView = new OverviewView({
+                        model: bills
+                    });
+                    contentView.render();
+                })
             });
         },
 
         newBill: function () {
             require(["views/new-bill"], function (NewBillView) {
                 _getAllTags(function(tags) {
+                    var bill = new BillModel();
+
                     var contentView = new NewBillView({
+                        model: bill, // new empty bill
                         tags: tags // all existing tags
                     });
                     contentView.render();
