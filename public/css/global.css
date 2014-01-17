@@ -1,3 +1,6 @@
 ﻿body { margin:10px; }
 
 #content { min-height:400px; }
+
+#content .tags { overflow:hidden; margin-bottom: 15px; }
+#content .tags .tag { float:left; padding: 5px 10px; margin-right: 10px; background-color: #DADADA; }

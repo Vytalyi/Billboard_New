@@ -1,3 +1,17 @@
-﻿<div>
-    New bill
-</div>
+﻿<form method="POST">
+    <fieldset>
+        <legend>Новое объявление</legend>
+
+        <label for="Title">Заголовок</label>
+        <input id="Title" name="title" type="text" class="input-xxlarge" placeholder="Введите заголовок…" />
+
+        <label for="Content">Текст</label>
+        <textarea id="Content" name="content" rows="10" class="input-xxlarge"></textarea>
+
+        <label for="Tag">Тэги</label>
+        <input id="Tag" type="text" class="input-xxlarge" placeholder="Введите тэг…" />
+        <div id="Tags" class="tags"></span>
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Опубликовать</button>
+</form>
