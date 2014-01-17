@@ -18,7 +18,6 @@
         },
 
         render: function () {
-            debugger;
 
             this.$el.attr("data-view", "overview");
 

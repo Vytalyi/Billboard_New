@@ -3,8 +3,14 @@
         <div>
             <div>title: <%= item.get("title") %></div>
             <div>message: <%= item.get("message") %></div>
-            <div>tags: <%= item.get("tags") %></div>
             <div>date: <%= item.get("createdDate") %></div>
+            <div class="tags">
+                <% _.each(item.get("tags").split(","), function(tag) { %>
+                    <% if (tag.replace(/\s/g, "") !== "") { %>
+                        <div class="tag"><%= tag %></div>
+                    <% } %>
+                <% }); %>
+            </div>
         </div>
     <br/>
     <% }); %>
