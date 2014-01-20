@@ -11,7 +11,8 @@
         defaults: {
             title: "",
             message: "",
-            tags: ""
+            tags: "",
+            contacts: ""
         },
 
         initialize: function() {
@@ -31,6 +32,9 @@
             }
             if (attrs.tags.replace(/\s/g, "") === "") {
                 return "At least one Tag should be specified";
+            }
+            if (attrs.contacts.replace(/\s/g, "") === "") {
+                return "Contacts should be specified";
             }
         }
     });

@@ -6,7 +6,8 @@ var BillSchema = new mongoose.Schema({
     message: String,
     tags: String,
     createdDate: Date,
-    viewCount: Number
+    viewCount: Number,
+    contacts: String
 });
 
 var Bill = mongoose.model("Bill", BillSchema);

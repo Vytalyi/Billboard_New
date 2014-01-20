@@ -74,7 +74,8 @@
                 that.model.set({
                     title: form.find("[name='title']").val(),
                     message: form.find("[name='message']").val(),
-                    tags: form.find("[name='tags']").val()
+                    tags: form.find("[name='tags']").val(),
+                    contacts: form.find("[name='contacts']").val()
                 }, { silent: true });
 
                 // save model to DB and redirect to overview once saved
