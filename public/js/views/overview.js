@@ -9,7 +9,7 @@
 
         el: $("#content"),
 
-        viewID: "new-bill",
+        viewID: "overview",
 
         template: _.template(pageHtml),
 

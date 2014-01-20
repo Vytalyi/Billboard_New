@@ -26,6 +26,10 @@ define([
         var href = $(e.target).attr("href") || "/";
         window.app_router.navigate(href, { trigger: true });
 
+        // activate link
+        $(".navbar .nav li.active").removeClass("active");
+        $(e.target).parent().addClass("active");
+
         return false;
     });
 

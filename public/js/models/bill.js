@@ -15,12 +15,13 @@
         },
 
         initialize: function() {
-            this.on("invalid",function(model ,error){
+            this.on("invalid",function(model, error){
                 alert(error);
             });
         },
 
-        /* Validate method will be called before .save() by default */
+        /* Validate method will be called before .save() by default
+           If validation will fail - Invalid event will be fired */
         validate: function(attrs, options) {
             if (attrs.title.replace(/\s/g, "") === "") {
                 return "Title should be specified";
