@@ -3,16 +3,18 @@
   'backbone'
 ], function ($, Backbone) {
 
-    var TagModel = Backbone.Model.extend({
+    var BillModel = Backbone.Model.extend({
         idAttribute: "_id",
 
         url: "/bill",
 
-        defaults: {
-            title: "",
-            message: "",
-            tags: "",
-            contacts: ""
+        defaults: function() {
+            return {
+                title: "",
+                message: "",
+                tags: "",
+                contacts: ""
+            };
         },
 
         initialize: function() {
@@ -37,8 +39,9 @@
                 return "Contacts should be specified";
             }
         }
+
     });
 
-    return TagModel;
+    return BillModel;
 
 });

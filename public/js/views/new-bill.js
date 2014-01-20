@@ -21,7 +21,7 @@
         render: function () {
             this.$el.attr("data-view", "new-bill");
 
-            var viewModel = _.extend(this.model.attributes, { });
+            var viewModel = _.extend(this.model.attributes);
 
             this.$el.html(this.template(viewModel));
 

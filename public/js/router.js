@@ -30,12 +30,12 @@
     /* -------------------------------------------------- */
 
     /* Code below is for processing tags model/collection */
-    var _getAllBills = function _getRecentBills(sort, callback) {
+    var _getAllBills = function _getAllBills(sort, callback) {
         var _bills = new BillCollection(sort);
         _bills.fetch({
             data: { sort: sort },
             success: function (response, models) {
-                callback(response.models);
+                callback(response);
             }
         })
     };
@@ -58,7 +58,7 @@
             require(["views/overview"], function (OverviewView) {
                 _getAllBills(sort || "no", function(bills) {
                     var contentView = new OverviewView({
-                        model: bills
+                        collection: bills
                     });
                     contentView.render();
                 })

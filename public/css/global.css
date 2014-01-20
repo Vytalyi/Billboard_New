@@ -1,6 +1,12 @@
 ﻿body { margin:10px; }
-
 #content { min-height:400px; }
+
+#content .bill { float:left; background-color: #FCFFDE; padding:10px; margin:20px 20px 0 0; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
+#content .bill .created-date {  }
+#content .bill .title {  }
+#content .bill .message {  }
+#content .bill .views {  }
+#content .bill .contacts {  }
 
 #content .tags { overflow:hidden; margin-bottom: 15px; }
 #content .tags .tag { float:left; padding: 5px 10px; margin-right: 10px; background-color: #DADADA; }

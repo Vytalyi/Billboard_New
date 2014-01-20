@@ -21,8 +21,7 @@
 
             this.$el.attr("data-view", "overview");
 
-            var viewModel = _.extend(this.model);
-
+            var viewModel = this.collection.models;
             this.$el.html(this.template(viewModel));
 
             return this;
