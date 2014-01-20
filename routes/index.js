@@ -11,13 +11,16 @@ var routerAPI = {
 
         /* existing pages */
 		app.get('/', this.getIndex);
-        app.get('/overview', this.getIndex);
+        app.get('/all', this.getIndex);
+        app.get('/recent', this.getIndex);
+        app.get('/popular', this.getIndex);
         app.get('/new-bill', this.getIndex);
 
         /* respond with JSON */
-		app.get('/tags', tags.getAll);
-        app.get('/bills', bills.getRecent);
-        app.post('/new-bill', bills.create);
+        app.get('/bills', bills.getAll);
+        app.post('/bill', bills.create);
+
+        app.get('/tags', tags.getAll);
 	},
 
 	getIndex: function (req, res) {

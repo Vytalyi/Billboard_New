@@ -26,6 +26,7 @@
             this.$el.html(this.template(viewModel));
 
             this.initTagAutocomplete();
+            this.overrideFormSubmit();
 
             return this;
         },
@@ -51,9 +52,43 @@
                     }, 0)
 
                     // concat tags and save it to hidden field
-                    $("#TagsConcated").val($("#TagsConcated").val() + ui.item.value + ", ")
+                    var str = "";
+                    if ($("#TagsConcated").val() === "") {
+                        str = ui.item.value;
+                    } else {
+                        str = $("#TagsConcated").val() + ", " + ui.item.value;
+                    }
+
+                    $("#TagsConcated").val(str);
                 }
             });
+        },
+
+        overrideFormSubmit: function() {
+            var that = this,
+                form = $("#newBillForm");
+            form.on("submit", function(e) {
+
+                // update model attributes based on form values
+                // silent: true will prevent validation performing
+                that.model.set({
+                    title: form.find("[name='title']").val(),
+                    message: form.find("[name='message']").val(),
+                    tags: form.find("[name='tags']").val()
+                }, { silent: true });
+
+                // save model to DB and redirect to overview once saved
+                that.model.save(that.model.attributes, {
+                    success: function(model, response) {
+                        window.app_router.navigate("/", { trigger: true });
+                    },
+                    error: function(model, errors) {
+                        alert(errors);
+                    }
+                });
+
+                return false;
+            })
         }
 
     });

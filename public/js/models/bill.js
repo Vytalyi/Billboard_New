@@ -4,12 +4,33 @@
 ], function ($, Backbone) {
 
     var TagModel = Backbone.Model.extend({
-        //idAttribute: "billID",
+        idAttribute: "_id",
+
+        url: "/bill",
 
         defaults: {
             title: "",
             message: "",
             tags: ""
+        },
+
+        initialize: function() {
+            this.on("invalid",function(model ,error){
+                alert(error);
+            });
+        },
+
+        /* Validate method will be called before .save() by default */
+        validate: function(attrs, options) {
+            if (attrs.title.replace(/\s/g, "") === "") {
+                return "Title should be specified";
+            }
+            if (attrs.message.replace(/\s/g, "") === "") {
+                return "Message should be specified";
+            }
+            if (attrs.tags.replace(/\s/g, "") === "") {
+                return "At least one Tag should be specified";
+            }
         }
     });
 

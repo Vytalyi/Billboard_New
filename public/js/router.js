@@ -30,14 +30,15 @@
     /* -------------------------------------------------- */
 
     /* Code below is for processing tags model/collection */
-    var _getRecentBills = function _getRecentBills(callback) {
-        var _bills = new BillCollection();
+    var _getAllBills = function _getRecentBills(sort, callback) {
+        var _bills = new BillCollection(sort);
         _bills.fetch({
+            data: { sort: sort },
             success: function (response, models) {
                 callback(response.models);
             }
         })
-    }
+    };
     /* -------------------------------------------------- */
 
 
@@ -45,17 +46,17 @@
         routes: {
             "": "index",
             "/": "index",
-            "overview": "overview",
+            "all": "overview",
+            "recent": "overviewRecent",
+            "popular": "overviewPopular",
+
             "new-bill": "newBill"
         },
 
-        index: function () {
-            this.navigate("/overview", { trigger: true });
-        },
-
-        overview: function () {
+        index: function () { this.navigate("/all", { trigger: true }); },
+        overview: function (sort) {
             require(["views/overview"], function (OverviewView) {
-                _getRecentBills(function(bills) {
+                _getAllBills(sort || "no", function(bills) {
                     var contentView = new OverviewView({
                         model: bills
                     });
@@ -63,6 +64,8 @@
                 })
             });
         },
+        overviewRecent: function () { this.overview("recent"); },
+        overviewPopular: function () { this.overview("popular"); },
 
         newBill: function () {
             require(["views/new-bill"], function (NewBillView) {

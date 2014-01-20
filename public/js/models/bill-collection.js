@@ -9,6 +9,7 @@
         Model: BillModel,
 
         url: "/bills"
+
     });
 
     return BillCollection;

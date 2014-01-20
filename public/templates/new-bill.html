@@ -1,4 +1,4 @@
-﻿<form method="POST" action="/new-bill">
+﻿<form id="newBillForm" method="POST" action="/bill">
     <fieldset>
         <legend>Новое объявление</legend>
 
@@ -6,7 +6,7 @@
         <input id="Title" name="title" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" placeholder="Введите заголовок…" />
 
         <label for="Content">Текст</label>
-        <textarea id="Content" name="content" rows="10" value="<%=this.model.get('message') %>" class="input-xxlarge"></textarea>
+        <textarea id="Content" name="message" rows="10" value="<%=this.model.get('message') %>" class="input-xxlarge"></textarea>
 
         <label for="Tag">Ключевые слова</label>
         <input id="Tag" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />

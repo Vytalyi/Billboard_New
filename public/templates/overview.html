@@ -4,6 +4,7 @@
             <div>title: <%= item.get("title") %></div>
             <div>message: <%= item.get("message") %></div>
             <div>date: <%= item.get("createdDate") %></div>
+            <div>views: <%= item.get("viewCount") %></div>
             <div class="tags">
                 <% _.each(item.get("tags").split(","), function(tag) { %>
                     <% if (tag.replace(/\s/g, "") !== "") { %>
