@@ -1,8 +1,9 @@
 ﻿<% _.each(this.collection.models, function(item) { %>
     <div class="bill">
-        <div class="title">title: <%= item.get("title") %></div>
-        <div class="message">message: <%= item.get("message") %></div>
-        <div class="created-date">date: <%= item.get("createdDate") %></div>
+        <div class="title"><span class="title-content"><%= item.get("title")%></span></div>
+        <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
+        <hr class="hor-separator">
+        <div class="message"><%= item.get("message") %></div>
         <div class="views">views: <%= item.get("viewCount") %></div>
         <div class="contacts">contacts: <%= item.get("contacts") %></div>
         <div class="tags">

@@ -35,6 +35,15 @@
         _bills.fetch({
             data: { sort: sort },
             success: function (response, models) {
+                for (var i=0, len=response.models.length; i<len; i++) {
+                    var _model = response.models[i]
+                        _date = new Date(_model.get("createdDate"));
+
+                    // extend model with created date in desired format
+                    _model.set({
+                        createdDateFormatted: _date.getFullYear() + "-" + _date.getMonth() + "-" + _date.getDate()
+                    });
+                }
                 callback(response);
             }
         })

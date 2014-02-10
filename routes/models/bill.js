@@ -5,7 +5,7 @@ var BillSchema = new mongoose.Schema({
     title: String,
     message: String,
     tags: String,
-    createdDate: Date,
+    createdDate: Number,
     viewCount: Number,
     contacts: String
 });

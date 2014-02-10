@@ -38,6 +38,10 @@
             if (attrs.contacts.replace(/\s/g, "") === "") {
                 return "Contacts should be specified";
             }
+        },
+
+        formatDate: function (date) {
+            return date;
         }
 
     });
