@@ -1,17 +1,17 @@
 ﻿<% _.each(this.collection.models, function(item) { %>
     <div class="bill">
-        <div class="title"><span class="title-content"><%= item.get("title")%></span></div>
+        <div class="title"><span class="title-content"><a href="#"><%= item.get("title")%></a></span></div>
+        <div class="tags">
+            <% _.each(item.get("tags").split(","), function(tag) { %>
+            <% if (tag.replace(/\s/g, "") !== "") { %>
+            <div class="tag"><%= tag %></div>
+            <% } %>
+            <% }); %>
+        </div>
         <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
         <hr class="hor-separator">
         <div class="message"><%= item.get("message") %></div>
         <div class="views">views: <%= item.get("viewCount") %></div>
         <div class="contacts">contacts: <%= item.get("contacts") %></div>
-        <div class="tags">
-            <% _.each(item.get("tags").split(","), function(tag) { %>
-                <% if (tag.replace(/\s/g, "") !== "") { %>
-                    <div class="tag"><%= tag %></div>
-                <% } %>
-            <% }); %>
-        </div>
     </div>
 <% }); %>

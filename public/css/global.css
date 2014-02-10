@@ -1,4 +1,4 @@
-﻿body { }
+﻿body { background: #f6f5f3; }
 
 /* customize Twitter Bootstrap navbar */
 .navbar-inner { background:#303030; border-radius:0; filter:""; padding-top:5px; padding-bottom:5px; }
@@ -18,14 +18,15 @@
 
 #content .hor-separator { border-top:1px solid #000; border-bottom:1px solid #000; margin:10px 0; }
 #content { min-height:400px; padding:20px 0; }
-#content .bill { float:left; width:28%; position:relative; background-color:#f5f1cf; padding:10px; margin:20px 2% 0 0; box-shadow: 0 0 5px rgba(0,0,0,0.5); overflow:hidden; }
+#content .bill { float:left; width:28%; position:relative; background:#ededed; padding:10px; margin:20px 2% 0 0; box-shadow: 0 0 5px rgba(0,0,0,0.5); overflow:hidden; }
 #content .bill:hover { box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 #content .bill .title { height:40px; overflow:hidden; font-weight:bold; word-break: break-all; }
-#content .bill .title:hover .title-content { display:block; position:absolute; right:10px; left:10px; top:10px; height:auto; overflow:visible; background:#f5f1cf; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+#content .bill .title:hover .title-content { display:block; position:absolute; right:10px; left:10px; top:10px; height:auto; overflow:visible; background:#ededed; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 #content .bill .created-date { font-weight: normal; font-style:italic; }
 #content .bill .message { height:150px; overflow:auto; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
 #content .bill .views {  }
 #content .bill .contacts {  }
 
-#content .tags { overflow:hidden; margin-bottom: 15px; }
-#content .tags .tag { float:left; padding: 5px 10px; margin-right: 10px; background-color: #DADADA; }
+#content .tags { overflow:hidden; font-size:12px;margin:3px 0; }
+#content .tags .tag { float:left; padding:3px 5px; margin-right:10px; background:#08c; color:#ffffff; }
+#content .height-10 { height:10px; }
