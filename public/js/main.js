@@ -6,7 +6,8 @@
         backbone: 'libs/backbone-min',
         text: "libs/text",
         templates: '../templates',
-        bootstrap: 'libs/bootstrap/js/bootstrap.min'
+        bootstrap: 'libs/bootstrap/js/bootstrap.min',
+        cookiehelper: 'helpers/cookies'
     }
 });
 

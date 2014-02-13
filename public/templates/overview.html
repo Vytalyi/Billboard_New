@@ -1,17 +1,28 @@
-﻿<% _.each(this.collection.models, function(item) { %>
-    <div class="bill">
-        <div class="title"><span class="title-content"><a href="#"><%= item.get("title")%></a></span></div>
-        <div class="tags">
-            <% _.each(item.get("tags").split(","), function(tag) { %>
-            <% if (tag.replace(/\s/g, "") !== "") { %>
-            <div class="tag"><%= tag %></div>
-            <% } %>
-            <% }); %>
+﻿<div class="row-fluid">
+    <div class="span12">
+        <div class="btn-group pull-right">
+            <button class="btn <%= this.collection.mode == 'grid' ? 'active' : '' %>" data-viewmode="grid"><i class="icon-th"></i></button>
+            <button class="btn <%= this.collection.mode == 'list' ? 'active' : '' %>" data-viewmode="list"><i class="icon-th-list"></i></button>
         </div>
-        <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
-        <hr class="hor-separator">
-        <div class="message"><%= item.get("message") %></div>
-        <div class="views">views: <%= item.get("viewCount") %></div>
-        <div class="contacts">contacts: <%= item.get("contacts") %></div>
     </div>
-<% }); %>
+</div>
+
+<div class="bill-wrapper <%= this.collection.mode %>">
+    <% _.each(this.collection.models, function(item, idx) { %>
+        <div class="bill">
+            <div class="title"><span class="title-content"><a href="#"><%= item.get("title")%></a></span></div>
+            <div class="tags">
+                <% _.each(item.get("tags").split(","), function(tag) { %>
+                    <% if (tag.replace(/\s/g, "") !== "") { %>
+                        <div class="tag"><%= tag %></div>
+                    <% } %>
+                <% }); %>
+            </div>
+            <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
+            <hr class="hor-separator">
+            <div class="message"><%= item.get("message") %></div>
+            <div class="views">views: <%= item.get("viewCount") %></div>
+            <div class="contacts">contacts: <%= item.get("contacts") %></div>
+        </div>
+    <% }); %>
+</div>
