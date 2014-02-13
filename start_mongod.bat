@@ -1,1 +1,0 @@
-"./mongodb/bin/mongod" --dbpath "./mongodb/mongo_data"
