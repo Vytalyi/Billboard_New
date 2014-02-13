@@ -1,7 +1,29 @@
 {
-  "name": "billboard",
+  "name": "Billboard",
   "version": "0.0.1",
   "engines": {
     "node": "0.10.x"
-  }
+  },
+  "main": "app.js",
+  "dependencies": {
+    "debug": "~0.7.2",
+    "express": "~3.1.0",
+    "hbs": "~2.1.0",
+    "mongoose": "~3.6.11",
+    "stylus": "~0.32.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vytalyi/Billboard_New.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vytalyi/Billboard_New/issues"
+  },
+  "homepage": "https://github.com/Vytalyi/Billboard_New"
 }

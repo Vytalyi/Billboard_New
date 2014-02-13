@@ -6,7 +6,8 @@
 
 
 /* Mongo initializing */
-mongoose.connect('mongodb://localhost/test');
+// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://test:welcome123@troup.mongohq.com:10020/Billboard1');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -19,7 +20,7 @@ db.once('open', function callback() {
 var app = express();
 
 app.configure(function () {
-	app.set('port', process.env.PORT || 3000);
+	app.set('port', process.env.PORT || 5000);
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'hbs');
 	app.use(express.favicon());
