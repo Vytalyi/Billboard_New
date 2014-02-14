@@ -19,10 +19,10 @@
                 <% }); %>
             </div>
             <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
+            <div class="views" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></div>
             <hr class="hor-separator">
             <div class="message"><%= item.get("message") %></div>
-            <div class="views">views: <%= item.get("viewCount") %></div>
-            <div class="contacts">contacts: <%= item.get("contacts") %></div>
+            <div class="contacts">Контакты: <%= item.get("contacts") %></div>
         </div>
     <% }); %>
 </div>

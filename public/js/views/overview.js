@@ -29,6 +29,8 @@
 
             this.attachViewModeSwitcher();
 
+            this.activateHeaderLink();
+
             return this;
         },
 
@@ -41,6 +43,11 @@
                 // remember viewMode
                 cookieHelper.set("viewMode", $(this).data("viewmode"));
             });
+        },
+
+        activateHeaderLink: function() {
+            // make one of navigation links at the top active
+            $(".navbar a[href=" + this.options.sort + "]:not(.active)").parent().addClass("active");
         }
 
     });

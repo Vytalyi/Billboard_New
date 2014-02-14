@@ -3,8 +3,8 @@
 module.exports = {
     init: function () {
 
-        if (Tag.collection.count() <= 0 || true) {
-            Tag.collection.drop(function (err) {
+        Tag.collection.count({}, function(err, count) {
+            if (count <= 0) {
                 new Tag({ tagID: 1, name: "Детский мир"}).save();
                 new Tag({ tagID: 2, name: "Недвижимость"}).save();
                 new Tag({ tagID: 3, name: "Транспорт"}).save();
@@ -15,8 +15,8 @@ module.exports = {
                 new Tag({ tagID: 8, name: "Мода и стиль"}).save();
                 new Tag({ tagID: 9, name: "Дом и сад"}).save();
                 new Tag({ tagID: 10, name: "Бизнес"}).save();
-            });
-        }
+            }
+        });
 
     },
     getAll: function (req, res) {

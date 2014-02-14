@@ -8,7 +8,16 @@
         templates: '../templates',
         bootstrap: 'libs/bootstrap/js/bootstrap.min',
         cookiehelper: 'helpers/cookies'
-    }
+    },
+    shim: {
+        jquery: {
+            exports: 'jquery'
+        },
+        'bootstrap': {
+            exports : 'jquery'
+        }
+    },
+    enforceDefine: true
 });
 
 define([
@@ -18,7 +27,6 @@ define([
     'router',
     'bootstrap'
 ], function ($, _, Backbone, Router) {
-
     /* Initialize Backbone router */
     window.app_router = new Router();
 

@@ -40,8 +40,9 @@
                         _date = new Date(_model.get("createdDate"));
 
                     // extend model with created date in desired format
+                    var months = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"];
                     _model.set({
-                        createdDateFormatted: _date.getFullYear() + "-" + _date.getMonth() + "-" + _date.getDate()
+                        createdDateFormatted: _date.getDate() + " " + months[_date.getMonth()-1] + " " +  _date.getFullYear()
                     });
                 }
                 callback(response);
@@ -62,12 +63,13 @@
             "new-bill": "newBill"
         },
 
-        index: function () { this.navigate("/all", { trigger: true }); },
+        index: function () { this.navigate("/recent", { trigger: true }); },
         overview: function (sort) {
             require(["views/overview"], function (OverviewView) {
                 _getAllBills(sort || "no", function(bills) {
                     var contentView = new OverviewView({
-                        collection: bills
+                        collection: bills,
+                        sort: sort
                     });
                     contentView.render();
                 })

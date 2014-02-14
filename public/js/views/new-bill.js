@@ -81,7 +81,7 @@
                 // save model to DB and redirect to overview once saved
                 that.model.save(that.model.attributes, {
                     success: function(model, response) {
-                        window.app_router.navigate("/", { trigger: true });
+                        window.app_router.navigate("/recent", { trigger: true });
                     },
                     error: function(model, errors) {
                         alert(errors);
