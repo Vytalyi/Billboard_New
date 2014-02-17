@@ -54,6 +54,15 @@ module.exports = {
 
     },
 
+    get: function (req, res) {
+        var id = req.params.id,
+            query = Bill.findOne({ _id: id });
+
+        query.exec(function (err, bill) {
+            res.send(JSON.stringify(bill));
+        })
+    },
+
     create: function (req, res) {
         var title = req.body.title,
             message = req.body.message,

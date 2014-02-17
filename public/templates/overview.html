@@ -10,7 +10,7 @@
 <div class="bill-wrapper <%= this.collection.mode %>">
     <% _.each(this.collection.models, function(item, idx) { %>
         <div class="bill">
-            <div class="title"><span class="title-content"><a href="#"><%= item.get("title")%></a></span></div>
+            <div class="title"><span class="title-content"><a data-navigation="true" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a></span></div>
             <div class="tags">
                 <% _.each(item.get("tags").split(","), function(tag) { %>
                     <% if (tag.replace(/\s/g, "") !== "") { %>

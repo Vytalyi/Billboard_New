@@ -21,15 +21,15 @@
 
         render: function () {
 
-            this.$el.attr("data-view", "overview");
+            this.$el.attr("data-view", this.viewID);
 
             var viewModel = this.collection;
             viewModel = _.extend(viewModel, { mode: this.viewMode });
             this.$el.html(this.template(viewModel));
 
             this.attachViewModeSwitcher();
-
             this.activateHeaderLink();
+            this.attachDetailsClickHandlers();
 
             return this;
         },
@@ -48,6 +48,19 @@
         activateHeaderLink: function() {
             // make one of navigation links at the top active
             $(".navbar a[href=" + this.options.sort + "]:not(.active)").parent().addClass("active");
+        },
+
+        attachDetailsClickHandlers: function() {
+            /* Override all links with custom navigation behavior */
+            this.$el.find("a[data-navigation=true]").on("click", function (e) {
+                var href = $(e.target).attr("href") || "/";
+                window.app_router.navigate(href, { trigger: true });
+
+                // deactivate active links
+                $(".navbar .nav li.active").removeClass("active");
+
+                return false;
+            });
         }
 
     });

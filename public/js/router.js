@@ -45,10 +45,20 @@
                         createdDateFormatted: _date.getDate() + " " + months[_date.getMonth()-1] + " " +  _date.getFullYear()
                     });
                 }
+
                 callback(response);
             }
         })
     };
+    var _getBillDetails = function(id, callback) {
+        var bill = new BillModel({_id: id});
+        bill.fetch({
+            success: function(response, model) {
+                callback(response);
+            }
+        });
+
+    }
     /* -------------------------------------------------- */
 
 
@@ -60,7 +70,8 @@
             "recent": "overviewRecent",
             "popular": "overviewPopular",
 
-            "new-bill": "newBill"
+            "new-bill": "newBill",
+            "bill-details/:id": "billDetails"
         },
 
         index: function () { this.navigate("/recent", { trigger: true }); },
@@ -89,6 +100,18 @@
                     });
                     contentView.render();
                 })
+            });
+        },
+
+        billDetails: function(id) {
+            require(["views/bill-details"], function (DetailsView) {
+                _getBillDetails(id, function(bill) {
+                    debugger;
+                    var contentView = new DetailsView({
+                        model: bill
+                    });
+                    contentView.render();
+                });
             });
         }
 

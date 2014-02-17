@@ -15,10 +15,12 @@ var routerAPI = {
         app.get('/recent', this.getIndex);
         app.get('/popular', this.getIndex);
         app.get('/new-bill', this.getIndex);
+        app.get('/bill-details/*', this.getIndex);
 
         /* respond with JSON */
         app.get('/bills', bills.getAll);
-        app.post('/bill', bills.create);
+        app.get('/bills/:id', bills.get);
+        app.post('/bills', bills.create);
 
         app.get('/tags', tags.getAll);
 	},

@@ -6,7 +6,7 @@
     var BillModel = Backbone.Model.extend({
         idAttribute: "_id",
 
-        url: "/bill",
+        urlRoot: "/bills",
 
         defaults: function() {
             return {
