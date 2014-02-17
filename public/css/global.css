@@ -78,8 +78,10 @@
 #content input.error, #content textarea.error { border:1px solid #ff0000; }
 
 /* Bill Details */
-#content .details-wrapper .tags { font-size:14px; font-size:16px; }
-#content .details-title {  }
+#content .details-wrapper .tags { font-size:14px; }
+#content .details-wrapper .buttons { margin-top: 20px; }
+#content .details-wrapper  .hor-separator { clear:both; border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
+#content .details-title { margin-bottom:10px; }
 #content .details-message { margin: 20px 0; padding:5px 10px; border-left: 1px solid #a6a6a6;  }
 #content .details-contacts { }
 /* ************ */

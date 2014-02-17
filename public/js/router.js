@@ -66,7 +66,9 @@
             }
         });
 
-    }
+    };
+
+    var _lastVisited = "";
     /* -------------------------------------------------- */
 
 
@@ -82,8 +84,12 @@
             "bill-details/:id": "billDetails"
         },
 
-        index: function () { this.navigate("/recent", { trigger: true }); },
+        index: function () {
+            _lastVisited = "/recent";
+            this.navigate(_lastVisited, { trigger: true });
+        },
         overview: function (sort) {
+            _lastVisited = "/" + sort;
             require(["views/overview"], function (OverviewView) {
                 _getAllBills(sort || "no", function(bills) {
                     var contentView = new OverviewView({
@@ -96,7 +102,6 @@
         },
         overviewRecent: function () { this.overview("recent"); },
         overviewPopular: function () { this.overview("popular"); },
-
         newBill: function () {
             require(["views/new-bill"], function (NewBillView) {
                 _getAllTags(function(tags) {
@@ -115,7 +120,8 @@
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
                     var contentView = new DetailsView({
-                        model: bill
+                        model: bill,
+                        backAction: _lastVisited
                     });
                     contentView.render();
                 });
