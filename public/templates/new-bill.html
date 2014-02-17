@@ -2,22 +2,43 @@
     <fieldset>
         <legend>Новое объявление</legend>
 
-        <label for="Title">Заголовок</label>
-        <input id="Title" name="title" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" placeholder="Введите заголовок…" />
+        <div class="alert alert-error hidden">
+            <strong>Исправьте ошибки прежде чем лпубликовать объявление:</strong><br>
+            <ul id="errorList"></ul>
+        </div>
 
-        <label for="Content">Текст</label>
-        <textarea id="Content" name="message" rows="10" value="<%=this.model.get('message') %>" class="input-xxlarge"></textarea>
+        <label for="Title">Заголовок
+            <a href="#" data-toggle="tooltip" title="Краткое информативное описание для вашего объявления. Размер не должен превышать 255 символов.">
+                <i class="icon-circle-arrow-up"></i>
+            </a>
+        </label>
+        <input id="Title" name="title" tabindex="1" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" placeholder="Введите заголовок…" />
 
-        <label for="Tag">Ключевые слова</label>
-        <input id="Tag" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />
+        <label for="Content">Текст
+            <a href="#" data-toggle="tooltip" title="Подробное содержание объявления. Размер неограничен.">
+                <i class="icon-circle-arrow-up"></i>
+            </a>
+        </label>
+        <textarea id="Content" name="message" tabindex="2" rows="10" value="<%=this.model.get('message') %>" class="input-xxlarge"></textarea>
+
+        <label for="Tag">Ключевые слова
+            <a href="#" data-toggle="tooltip" title="Ключевые слова по которым пользователь сможет определить тематику объявления. Необходимо указать как минимум одно ключевое слово.">
+                <i class="icon-circle-arrow-up"></i>
+            </a>
+        </label>
+        <input id="Tag" name="tag" tabindex="3" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />
         <div id="Tags" class="tags"></div>
         <input id="TagsConcated" name="tags" type="hidden" value="<%=this.model.get('tags') %>" />
 
         <div class="height-10"></div>
 
-        <label for="Contacts">Контактная информация</label>
-        <textarea id="Contacts" name="contacts" rows="4" value="<%=this.model.get('contacts') %>" class="input-xxlarge"></textarea>
+        <label for="Contacts">Контактная информация
+            <a href="#" data-toggle="tooltip" title="Контактные данные для обратной связи - телефон, почтовый адрес, и т.д. Размер неограничен">
+                <i class="icon-circle-arrow-up"></i>
+            </a>
+        </label>
+        <textarea id="Contacts" name="contacts" tabindex="4" rows="4" value="<%=this.model.get('contacts') %>" class="input-xxlarge"></textarea>
     </fieldset>
 
-    <button type="submit" class="btn btn-primary">Опубликовать</button>
+    <button type="submit" tabindex="5" class="btn btn-primary">Опубликовать</button>
 </form>

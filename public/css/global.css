@@ -72,6 +72,11 @@
 #content .bill-wrapper.list .tags { overflow:hidden; font-size:12px; margin:5px 0; float:left; }
 /* ******** */
 
+#content .alert-error { width:495px; }
+#content .alert-error.hidden { display:none; }
+#content #errorList { display:block; }
+#content input.error, #content textarea.error { border:1px solid #ff0000; }
+
 #content { min-height:400px; padding:20px 0; }
 #content .tags { overflow:hidden; font-size:12px;margin:3px 0; }
 #content .tags .tag { float:left; padding:3px 5px; margin-right:10px; background:#08c; color:#ffffff; }

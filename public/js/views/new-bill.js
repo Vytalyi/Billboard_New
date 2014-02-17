@@ -27,6 +27,7 @@
 
             this.initTagAutocomplete();
             this.overrideFormSubmit();
+            this.initializeTooltips();
 
             return this;
         },
@@ -84,12 +85,40 @@
                         window.app_router.navigate("/recent", { trigger: true });
                     },
                     error: function(model, errors) {
-                        alert(errors);
+                        // hide error message if exists
+                        $(".alert-error").filter(":not(.hidden)").addClass("hidden");
+
+                        // clear old errors
+                        $("#errorList").html("");
+
+                        // process all errors
+                        for (var i=0, len=errors.length; i<len; i++) {
+                            var err = errors[i],
+                                input = $("input[name=" + err.input + "], textarea[name=" + err.input + "]").filter(":not(.error)");
+                            input.addClass("error");
+                            input.off("keydown").on("keydown", function (e) {
+                                $(this).removeClass("error"); // remove error borders on keydown
+                            });
+                            $("#errorList").append("<li>" + err.msg + "</li>");
+                        }
+
+                        // show error box
+                        $(".alert-error.hidden").removeClass("hidden").off("click").on("click", function() {
+                            $(this).addClass("hidden");
+                        });
                     }
                 });
 
                 return false;
             })
+        },
+
+        initializeTooltips: function() {
+            setTimeout(function () {
+                $("a[data-toggle=tooltip]").tooltip({
+                    // options
+                });
+            }, 100);
         }
 
     });
