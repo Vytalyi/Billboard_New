@@ -53,8 +53,16 @@
     var _getBillDetails = function(id, callback) {
         var bill = new BillModel({_id: id});
         bill.fetch({
-            success: function(response, model) {
-                callback(response);
+            success: function(model, response) {
+                var _date = new Date(model.get("createdDate"));
+
+                // extend model with created date in desired format
+                var months = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"];
+                model.set({
+                    createdDateFormatted: _date.getDate() + " " + months[_date.getMonth()-1] + " " +  _date.getFullYear()
+                });
+
+                callback(model);
             }
         });
 
@@ -106,7 +114,6 @@
         billDetails: function(id) {
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
-                    debugger;
                     var contentView = new DetailsView({
                         model: bill
                     });

@@ -1,1 +1,12 @@
-﻿<h2>Скоро будет...</h2>
+﻿<div class="details-wrapper">
+    <div class="details-title"><b><%=this.model.get('title') %></b> от <i><%= this.model.get("createdDateFormatted") %></i></div>
+    <div class="tags">
+        <% _.each(this.model.get("tags").split(","), function(tag) { %>
+            <% if (tag.replace(/\s/g, "") !== "") { %>
+                <div class="tag"><%= tag %></div>
+            <% } %>
+        <% }); %>
+    </div>
+    <div class="details-message"><%=this.model.get('message') %></div>
+    <div class="details-contacts">Контактные данные: <%=this.model.get('contacts') %></div>
+</form>

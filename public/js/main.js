@@ -42,6 +42,12 @@ define([
         return false;
     });
 
+    // precaching all images so they can be shown more fast
+    var imagesArr = ["/css/hero.jpg", "/css/logo.png"];
+    for (var i=0, len=imagesArr.length; i<len; i++) {
+        new Image().src = imagesArr[i];
+    }
+
     /* Enable history */
     Backbone.history.start({ pushState: true });
 });
