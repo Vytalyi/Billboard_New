@@ -30,6 +30,7 @@
             this.attachViewModeSwitcher();
             this.activateHeaderLink();
             this.attachDetailsClickHandlers();
+            this.initializeTooltips();
 
             return this;
         },
@@ -61,6 +62,14 @@
 
                 return false;
             });
+        },
+
+        initializeTooltips: function() {
+            setTimeout(function () {
+                $("a[data-toggle=tooltip]").tooltip({
+                    // options
+                });
+            }, 200);
         }
 
     });

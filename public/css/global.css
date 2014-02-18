@@ -34,42 +34,44 @@
 
 /* Grid view */
 #content .bill-wrapper.grid { overflow:hidden; padding:5px; margin-right:-3%; }
-#content .bill-wrapper.grid .bill { float:left; width:28%; position:relative; background: #f7f7f7; padding:10px; margin:20px 3% 0 0; overflow:hidden;
+#content .bill-wrapper.grid .bill { float:left; width:28%; background: #f7f7f7; padding:10px; margin:20px 3% 0 0;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
     box-shadow: 0 0 5px rgba(0,0,0,0.5); }
 #content .bill-wrapper.grid .bill:hover {
+    background: #fff5c6;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-#content .bill-wrapper.grid .bill .title { height:20px; overflow:hidden; font-weight:bold; word-break: break-all; }
-#content .bill-wrapper.grid .bill .title:hover .title-content { display:block; position:absolute; right:10px; left:10px; top:10px; height:auto; overflow:visible; background:#f7f7f7; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+#content .bill-wrapper.grid .bill .title { display:inline-block; height:20px; overflow:hidden; font-weight:bold; word-break: break-all; text-decoration: none; }
 #content .bill-wrapper.grid .bill .created-date { font-weight: normal; font-style:italic; display:inline-block; }
 #content .bill-wrapper.grid .bill .message { height:150px; overflow:auto; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
-#content .bill-wrapper.grid .bill .views { display:inline-block; float:right; }
+#content .bill-wrapper.grid .bill .views { display:inline-block; float:right; color:#000000; text-decoration:none; }
 #content .bill-wrapper.grid .bill .contacts { height:20px; overflow:hidden; }
+#content .bill-wrapper.grid .tooltip { font-size:12px; position: absolute; }
 #content .bill-wrapper.grid .hor-separator { border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
-#content .bill-wrapper.grid .tags { overflow:hidden; font-size:12px;margin:3px 0; height:26px; }
+#content .bill-wrapper.grid .tags { overflow:hidden; font-size:12px;margin:0; height:26px; }
 /* ******** */
 
 /* List view */
 #content .bill-wrapper.list { overflow:hidden; padding:5px; }
-#content .bill-wrapper.list .bill { position:relative; background:#ededed; padding:10px; margin:20px 0 0 0;
+#content .bill-wrapper.list .bill { background:#ededed; padding:10px; margin:20px 0 0 0;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
     box-shadow: 0 0 5px rgba(0,0,0,0.5); }
 #content .bill-wrapper.list .bill:hover {
+    background: #fff5c6;
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-#content .bill-wrapper.list .bill .title { height:20px; overflow:hidden; font-weight:bold; word-break: break-all; margin:0 60px 0 0; }
-#content .bill-wrapper.list .bill .title:hover .title-content { display:block; position:absolute; right:70px; left:10px; top:10px; height:auto; overflow:visible; background:#ededed; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+#content .bill-wrapper.list .bill .title { display:inline-block; float:left; overflow:hidden;  height:20px; font-weight:bold; word-break: break-all; text-decoration: none; margin:0 60px 0 0; }
 #content .bill-wrapper.list .bill .created-date { font-weight: normal; font-style:italic; float:right; line-height:26px; margin:5px 0; }
 #content .bill-wrapper.list .bill .message { padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
-#content .bill-wrapper.list .bill .views { position:absolute; top:10px; right:10px; }
+#content .bill-wrapper.list .bill .views { color:#000000; text-decoration:none; float:right; }
 #content .bill-wrapper.list .bill .contacts { height:20px; overflow:hidden; }
+#content .bill-wrapper.list .tooltip { font-size:12px; position:absolute; }
 #content .bill-wrapper.list .hor-separator { clear:both; border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
-#content .bill-wrapper.list .tags { overflow:hidden; font-size:12px; margin:5px 0; float:left; }
+#content .bill-wrapper.list .tags { overflow:hidden; clear:both; font-size:12px; margin:5px 0; float:left; }
 /* ******** */
 
 #content .alert-error { width:495px; }

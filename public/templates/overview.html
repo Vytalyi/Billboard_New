@@ -8,21 +8,41 @@
 </div>
 
 <div class="bill-wrapper <%= this.collection.mode %>">
-    <% _.each(this.collection.models, function(item, idx) { %>
-        <div class="bill">
-            <div class="title"><span class="title-content"><a data-navigation="true" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a></span></div>
-            <div class="tags">
-                <% _.each(item.get("tags").split(","), function(tag) { %>
-                    <% if (tag.replace(/\s/g, "") !== "") { %>
-                        <div class="tag"><%= tag %></div>
-                    <% } %>
-                <% }); %>
+    <% if (this.collection.mode == 'grid') { %>
+        <% _.each(this.collection.models, function(item, idx) { %>
+            <div class="bill">
+                <a class="title" data-navigation="true" data-toggle="tooltip" title="<%= item.get('title')%>" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a>
+                <div class="tags">
+                    <% _.each(item.get("tags").split(","), function(tag) { %>
+                        <% if (tag.replace(/\s/g, "") !== "") { %>
+                            <div class="tag"><%= tag %></div>
+                        <% } %>
+                    <% }); %>
+                </div>
+                <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
+                <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>
+                <hr class="hor-separator">
+                <div class="message"><%= item.get("message") %></div>
+                <div class="contacts">Контакты: <%= item.get("contacts") %></div>
             </div>
-            <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
-            <div class="views" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></div>
-            <hr class="hor-separator">
-            <div class="message"><%= item.get("message") %></div>
-            <div class="contacts">Контакты: <%= item.get("contacts") %></div>
-        </div>
-    <% }); %>
+        <% }); %>
+    <% } else {%>
+        <% _.each(this.collection.models, function(item, idx) { %>
+            <div class="bill">
+                <a class="title" data-navigation="true" data-toggle="tooltip" title="<%= item.get('title')%>" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a>
+                <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>
+                <div class="tags">
+                    <% _.each(item.get("tags").split(","), function(tag) { %>
+                    <% if (tag.replace(/\s/g, "") !== "") { %>
+                    <div class="tag"><%= tag %></div>
+                    <% } %>
+                    <% }); %>
+                </div>
+                <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
+                <hr class="hor-separator">
+                <div class="message"><%= item.get("message") %></div>
+                <div class="contacts">Контакты: <%= item.get("contacts") %></div>
+            </div>
+        <% }); %>
+    <% } %>
 </div>
