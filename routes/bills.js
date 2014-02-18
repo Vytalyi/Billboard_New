@@ -60,6 +60,10 @@ module.exports = {
 
         query.exec(function (err, bill) {
             res.send(JSON.stringify(bill));
+
+            // views analytics
+            bill.viewCount = bill.viewCount + 1;
+            bill.save();
         })
     },
 

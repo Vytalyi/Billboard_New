@@ -15,7 +15,7 @@ var routerAPI = {
         app.get('/recent', this.getIndex);
         app.get('/popular', this.getIndex);
         app.get('/new-bill', this.getIndex);
-        app.get('/bill-details/*', this.getIndex);
+        app.get('/bill-details/:id', this.getIndex);
 
         /* respond with JSON */
         app.get('/bills', bills.getAll);
