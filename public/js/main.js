@@ -1,21 +1,16 @@
 ﻿require.config({
     paths: {
         jquery: 'libs/jquery/jquery-min',
-        jqueryui: 'libs/jquery/jquery-ui.min',
         underscore: 'libs/underscore-min',
         backbone: 'libs/backbone-min',
         text: "libs/text",
         templates: '../templates',
         bootstrap: 'libs/bootstrap/js/bootstrap.min',
+        jqueryui: 'libs/jquery/jquery-ui.min',
         cookiehelper: 'helpers/cookies'
     },
     shim: {
-        jquery: {
-            exports: 'jquery'
-        },
-        'bootstrap': {
-            exports : 'jquery'
-        }
+        'bootstrap': ['jquery']
     },
     enforceDefine: true
 });
