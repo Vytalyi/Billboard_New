@@ -1,4 +1,5 @@
 ﻿body { background: #e8e7e5; }
+#content.loading { background-image: url('/css/loading.gif'); background-position: center center; background-repeat: no-repeat; }
 
 /* customize Twitter Bootstrap navbar */
 .navbar-inner { background:#303030; border-radius:0; filter:""; padding-top:5px; padding-bottom:5px; }

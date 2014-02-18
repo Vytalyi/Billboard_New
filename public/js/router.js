@@ -69,6 +69,13 @@
     };
 
     var _lastVisited = "";
+    var _loadingStart = function() {
+        $("#content").html("");
+        $("#content:not(.loading)").addClass("loading"); // loading starts
+    }
+    var _loadingEnds = function() {
+        $("#content.loading").removeClass("loading"); // loading ends
+    }
     /* -------------------------------------------------- */
 
 
@@ -89,6 +96,7 @@
             this.navigate(_lastVisited, { trigger: true });
         },
         overview: function (sort) {
+            _loadingStart();
             _lastVisited = "/" + sort;
             require(["views/overview"], function (OverviewView) {
                 _getAllBills(sort || "no", function(bills) {
@@ -97,12 +105,14 @@
                         sort: sort
                     });
                     contentView.render();
+                    _loadingEnds();
                 })
             });
         },
         overviewRecent: function () { this.overview("recent"); },
         overviewPopular: function () { this.overview("popular"); },
         newBill: function () {
+            _loadingStart();
             require(["views/new-bill"], function (NewBillView) {
                 _getAllTags(function(tags) {
                     var bill = new BillModel();
@@ -112,11 +122,13 @@
                         tags: tags // all existing tags
                     });
                     contentView.render();
+                    _loadingEnds();
                 })
             });
         },
 
         billDetails: function(id) {
+            _loadingStart();
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
                     var contentView = new DetailsView({
@@ -124,6 +136,7 @@
                         backAction: _lastVisited
                     });
                     contentView.render();
+                    _loadingEnds();
                 });
             });
         }
