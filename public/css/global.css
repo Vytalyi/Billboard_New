@@ -82,6 +82,7 @@
 #content #errorList { display:block; }
 #content input.error, #content textarea.error { border:1px solid #ff0000; }
 #content .publish { margin-left:20px; }
+#content #newBillForm .buttons { margin-top:20px; }
 
 /* Bill Details */
 #content .details-wrapper .tags { font-size:14px; }

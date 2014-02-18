@@ -1,7 +1,6 @@
 ﻿require.config({
-    urlArgs: "bust=" + (new Date()).getTime(),
     paths: {
-        jquery: 'http://code.jquery.com/jquery-1.11.0.min',
+        jquery: 'libs/jquery/jquery-min',
         underscore: 'libs/underscore-min',
         backbone: 'libs/backbone-min',
         text: "libs/text",

@@ -30,6 +30,7 @@
             this.overrideFormSubmit();
             this.initializeTooltips();
             this.attachBackBtnHandler();
+            this.scrollTo();
 
             return this;
         },
@@ -136,6 +137,14 @@
                     window.app_router.navigate(lastVisiteAction, { trigger: true });
                 }
                 return false;
+            });
+        },
+
+        scrollTo: function () {
+            $("html, body").animate({
+                scrollTop: "475"
+            }, 500, function() {
+                // done
             });
         }
 

@@ -59,11 +59,11 @@ module.exports = {
             query = Bill.findOne({ _id: id });
 
         query.exec(function (err, bill) {
-            res.send(JSON.stringify(bill));
-
             // views analytics
             bill.viewCount = bill.viewCount + 1;
             bill.save();
+
+            res.send(JSON.stringify(bill));
         })
     },
 
