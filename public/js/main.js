@@ -1,18 +1,31 @@
 ﻿require.config({
+    urlArgs: "bust=" + (new Date()).getTime(),
     paths: {
-        jquery: 'libs/jquery/jquery-min',
+        jquery: 'http://code.jquery.com/jquery-1.11.0.min',
         underscore: 'libs/underscore-min',
         backbone: 'libs/backbone-min',
         text: "libs/text",
         templates: '../templates',
         bootstrap: 'libs/bootstrap/js/bootstrap.min',
-        jqueryui: 'libs/jquery/jquery-ui.min',
+        jqueryui: "libs/jquery/jquery-ui.min",
+        jqueryuiautocomplete: 'libs/jquery/jquery.ui.autocomplete.min',
+        jqueryuitooltip: 'libs/jquery/jquery.ui.tooltip.min',
         cookiehelper: 'helpers/cookies'
     },
     shim: {
-        'bootstrap': ['jquery']
-    },
-    enforceDefine: true
+        "bootstrap": {
+            deps: ['jquery'],
+            exports: 'bootstrap'
+        },
+        "jqueryuiautocomplete": {
+            deps: ['jqueryui'],
+            exports: 'jqueryuiautocomplete'
+        },
+        "jqueryuitooltip": {
+            deps: ['jqueryui'],
+            exports: 'jqueryuitooltip'
+        }
+    }
 });
 
 define([

@@ -1,10 +1,11 @@
 ﻿define([
     'jquery',
-    "jqueryui",
+    "jqueryuiautocomplete",
+    "jqueryuitooltip",
     'underscore',
     'backbone',
     'text!templates/new-bill.html'
-], function ($, jqueryui, _, Backbone, pageHtml) {
+], function ($, j1, j2, _, Backbone, pageHtml) {
 
     var NewBillView = Backbone.View.extend({
 

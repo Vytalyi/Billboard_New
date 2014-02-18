@@ -1,10 +1,11 @@
 ﻿define([
     'jquery',
+    'jqueryuitooltip',
     'underscore',
     'backbone',
     'cookiehelper',
     'text!templates/overview.html'
-], function ($, _, Backbone, cookieHelper, pageHtml) {
+], function ($, j1, _, Backbone, cookieHelper, pageHtml) {
 
     var OverviewView = Backbone.View.extend({
 
@@ -67,7 +68,6 @@
         initializeTooltips: function() {
             setTimeout(function () {
                 $("a[data-toggle=tooltip]").tooltip({
-                    // options
                 });
             }, 200);
         }

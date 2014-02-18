@@ -1,10 +1,9 @@
 ﻿define([
     'jquery',
-    "jqueryui",
     'underscore',
     'backbone',
     'text!templates/bill-details.html'
-], function ($, jqueryui, _, Backbone, pageHtml) {
+], function ($, _, Backbone, pageHtml) {
 
     var billDetailsView = Backbone.View.extend({
 
