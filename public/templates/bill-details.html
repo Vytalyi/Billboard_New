@@ -1,5 +1,6 @@
 ﻿<div class="details-wrapper">
-    <div class="details-title"><b><%=this.model.get('title') %></b> от <i><%= this.model.get("createdDateFormatted") %></i></div>
+    <div class="details-title"><b><%=this.model.get('title') %></b></div>
+    <div class="details-created-date"><i>Опубликовано: <%= this.model.get("createdDateFormatted") %></i></div>
     <div class="tags">
         <% _.each(this.model.get("tags").split(","), function(tag) { %>
             <% if (tag.replace(/\s/g, "") !== "") { %>
