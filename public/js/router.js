@@ -123,7 +123,8 @@
 
                     var contentView = new NewBillView({
                         model: bill, // new empty bill
-                        tags: tags // all existing tags
+                        tags: tags, // all existing tags
+                        backAction: _lastVisited
                     });
                     contentView.render();
                     _loadingEnds();

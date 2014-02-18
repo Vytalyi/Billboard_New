@@ -69,17 +69,19 @@
 #content .bill-wrapper.list .right { width: 250px; float:right; }
 #content .bill-wrapper.list .bill .title { display:inline-block; float:left; overflow:hidden;  height:20px; font-weight:bold; word-break: break-all; text-decoration: none; margin:0 60px 0 0; }
 #content .bill-wrapper.list .bill .created-date { font-weight: normal; float:left; font-style:italic; line-height:20px; margin:0; }
-#content .bill-wrapper.list .bill .message { clear:both; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
+#content .bill-wrapper.list .bill .message { clear:both; padding:0; font-size: 13px; line-height: 15px; word-break:break-all; }
 #content .bill-wrapper.list .bill .views { color:#000000; text-decoration:none; float:right; }
 #content .bill-wrapper.list .bill .contacts { }
 #content .bill-wrapper.list .tooltip { font-size:12px; position:absolute; }
 #content .bill-wrapper.list .tags { overflow:hidden; clear:both; font-size:12px; margin:5px 0; float:left; }
+#content .bill-wrapper.list .tags .tag { margin-bottom:5px; }
 /* ******** */
 
 #content .alert-error { width:495px; }
 #content .alert-error.hidden { display:none; }
 #content #errorList { display:block; }
 #content input.error, #content textarea.error { border:1px solid #ff0000; }
+#content .publish { margin-left:20px; }
 
 /* Bill Details */
 #content .details-wrapper .tags { font-size:14px; }

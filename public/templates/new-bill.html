@@ -3,7 +3,7 @@
         <legend>Новое объявление</legend>
 
         <div class="alert alert-error hidden">
-            <strong>Исправьте ошибки прежде чем лпубликовать объявление:</strong><br>
+            <strong>Исправьте ошибки прежде чем опубликовать объявление:</strong><br>
             <ul id="errorList"></ul>
         </div>
 
@@ -40,5 +40,8 @@
         <textarea id="Contacts" name="contacts" tabindex="4" rows="4" value="<%=this.model.get('contacts') %>" class="input-xxlarge"></textarea>
     </fieldset>
 
-    <button type="submit" tabindex="5" class="btn btn-primary">Опубликовать</button>
+    <div class="buttons">
+        <a class="btn back-btn" href="#" data-navigation="true">< Вернуться назад</a>
+        <button type="submit" tabindex="5" class="btn btn-primary publish">Опубликовать</button>
+    </div>
 </form>

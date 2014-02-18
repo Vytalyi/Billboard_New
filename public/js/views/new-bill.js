@@ -29,6 +29,7 @@
             this.initTagAutocomplete();
             this.overrideFormSubmit();
             this.initializeTooltips();
+            this.attachBackBtnHandler();
 
             return this;
         },
@@ -51,7 +52,7 @@
                     $("#Tags").append(tag);
                     setTimeout(function() {
                         $("#Tag").val("");
-                    }, 0)
+                    }, 0);
 
                     // concat tags and save it to hidden field
                     var str = "";
@@ -103,9 +104,14 @@
                             $("#errorList").append("<li>" + err.msg + "</li>");
                         }
 
-                        // show error box
-                        $(".alert-error.hidden").removeClass("hidden").off("click").on("click", function() {
-                            $(this).addClass("hidden");
+                        // show error box - then hide on click
+                        var el = $(".alert-error");
+                        el.show(200, function() {
+                            el.removeClass("hidden").off("click").on("click", function() {
+                                el.hide(200, function() {
+                                    el.addClass("hidden");
+                                });
+                            });
                         });
                     }
                 });
@@ -120,6 +126,17 @@
                     // options
                 });
             }, 100);
+        },
+
+        attachBackBtnHandler: function() {
+            var that = this;
+            this.$el.find("a[data-navigation=true]").on("click", function() {
+                var lastVisiteAction = that.options.backAction || "/";
+                if (lastVisiteAction != "") {
+                    window.app_router.navigate(lastVisiteAction, { trigger: true });
+                }
+                return false;
+            });
         }
 
     });
