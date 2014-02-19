@@ -22,7 +22,7 @@
                 <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
                 <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>
                 <hr class="hor-separator">
-                <div class="message"><%= item.get("message") %></div>
+                <a class="message" href="bill-details/<%= item.get('_id') %>" data-toggle="tooltip" title="Нажмите чтобы посмотреть подробнее" data-navigation="true"><%= item.get("message") %></a>
                 <div class="contacts">Контакты: <%= item.get("contacts") %></div>
             </div>
         <% }); %>
@@ -31,7 +31,7 @@
             <div class="bill">
                 <div class="left">
                     <a class="title" data-navigation="true" data-toggle="tooltip" title="<%= item.get('title')%>" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a>
-                    <div class="message"><%= item.get("message") %></div>
+                    <a class="message" href="bill-details/<%= item.get('_id') %>" data-toggle="tooltip" title="Нажмите чтобы посмотреть подробнее" data-navigation="true"><%= item.get("message") %></a>
                     <div class="contacts">Контакты: <%= item.get("contacts") %></div>
                 </div>
                 <div class="right">

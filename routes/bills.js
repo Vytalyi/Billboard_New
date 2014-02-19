@@ -48,6 +48,9 @@ module.exports = {
             query.sort('-viewCount');
         }
 
+        // select all columns without images
+        query.select('_id title message tags createdDate viewCount contacts');
+
         query.exec(function(error, bills){
             res.send(JSON.stringify(bills));
         });
@@ -83,7 +86,7 @@ module.exports = {
             contacts: contacts,
             images: images
         });
-        
+
         bill.save();
         res.send(JSON.stringify(bill));
     }

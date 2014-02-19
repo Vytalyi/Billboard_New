@@ -31,6 +31,7 @@
     box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.75); }
 .hero .hero-text h2 { color:#ffffff; font-variant:small-caps; }
 .hero .hero-text p { color:#ffffff; }
+.hero .mask { position:absolute; top:0; right:0; bottom:0; left:0; }
 /**************************/
 
 /* Grid view */
@@ -46,12 +47,12 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 #content .bill-wrapper.grid .bill .title { display:inline-block; height:20px; overflow:hidden; font-weight:bold; word-break: break-all; text-decoration: none; }
 #content .bill-wrapper.grid .bill .created-date { font-weight: normal; font-style:italic; display:inline-block; }
-#content .bill-wrapper.grid .bill .message { height:150px; overflow:auto; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
+#content .bill-wrapper.grid .bill .message { display:block; color:#000000; text-decoration:none; height:150px;overflow:hidden; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
 #content .bill-wrapper.grid .bill .views { display:inline-block; float:right; color:#000000; text-decoration:none; }
 #content .bill-wrapper.grid .bill .contacts { height:20px; overflow:hidden; }
-#content .bill-wrapper.grid .tooltip { font-size:12px; position: absolute; }
 #content .bill-wrapper.grid .hor-separator { border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
 #content .bill-wrapper.grid .tags { overflow:hidden; font-size:12px;margin:0; height:26px; }
+#content .bill-wrapper.grid .bill:hover .message-link {  }
 /* ******** */
 
 /* List view */
@@ -69,10 +70,9 @@
 #content .bill-wrapper.list .right { width: 250px; float:right; }
 #content .bill-wrapper.list .bill .title { display:inline-block; float:left; overflow:hidden;  height:20px; font-weight:bold; word-break: break-all; text-decoration: none; margin:0 60px 0 0; }
 #content .bill-wrapper.list .bill .created-date { font-weight: normal; float:left; font-style:italic; line-height:20px; margin:0; }
-#content .bill-wrapper.list .bill .message { clear:both; padding:0; font-size: 13px; line-height: 15px; word-break:break-all; }
+#content .bill-wrapper.list .bill .message { clear:both; display:block; color:#000000; text-decoration:none; padding:0; font-size: 13px; line-height: 15px; word-break:break-all; }
 #content .bill-wrapper.list .bill .views { color:#000000; text-decoration:none; float:right; }
 #content .bill-wrapper.list .bill .contacts { }
-#content .bill-wrapper.list .tooltip { font-size:12px; position:absolute; }
 #content .bill-wrapper.list .tags { overflow:hidden; clear:both; font-size:12px; margin:5px 0; float:left; }
 #content .bill-wrapper.list .tags .tag { margin-bottom:5px; }
 /* ******** */
@@ -98,10 +98,13 @@
 #content .details-created-date { margin-bottom:10px; }
 #content .details-message { margin: 20px 0; padding:5px 10px; border-left: 1px solid #a6a6a6;  }
 #content .details-contacts { }
-#content .details-photos { margin-top:15px; }
+#content .details-photos { margin-top:15px; position:relative; }
+#largePreviewImage { width:940px; height:auto; position:absolute; bottom:120px; margin: 0 auto; }
 /* ************ */
 
 #content { min-height:400px; padding:20px 0; }
 #content .tags { overflow:hidden; font-size:12px;margin:3px 0; }
 #content .tags .tag { float:left; padding:3px 5px; margin-right:10px; background:#08c; color:#ffffff; }
 #content .height-10 { height:10px; }
+
+.ui-tooltip.ui-widget { font-size:12px; }

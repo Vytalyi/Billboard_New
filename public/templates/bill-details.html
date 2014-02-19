@@ -17,7 +17,7 @@
             <div class="photos-heading"><%= this.model.get('imagesArray').length %> фото:</div>
             <div class="image-preview-box">
                 <% _.each(this.model.get('imagesArray'), function(image) { %>
-                <a href="<%=image %>" target="_blank"><img class="img-polaroid" src="<%=image %>" /></a>
+                    <a href="<%=image %>" target="_blank"><img class="img-polaroid" src="<%=image %>" /></a>
                 <% }) %>
             </div>
         </div>
