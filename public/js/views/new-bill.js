@@ -31,6 +31,7 @@
             this.initializeTooltips();
             this.attachBackBtnHandler();
             this.scrollTo();
+            this.initFileUpload();
 
             return this;
         },
@@ -79,7 +80,10 @@
                     title: form.find("[name='title']").val(),
                     message: form.find("[name='message']").val(),
                     tags: form.find("[name='tags']").val(),
-                    contacts: form.find("[name='contacts']").val()
+                    contacts: form.find("[name='contacts']").val(),
+                    images: form.find(".image-preview-box img").map(function() {
+                        return $(this).attr("src")
+                    }).get().join("_SEPARATOR_")
                 }, { silent: true });
 
                 // save model to DB and redirect to overview once saved
@@ -145,6 +149,33 @@
                 scrollTop: "475"
             }, 500, function() {
                 // done
+            });
+        },
+
+        initFileUpload: function() {
+            $('#fileInput').on("change", function(e) {
+                var file = this.files[0], // get fine from input
+                    previewBox = $("#imagePreview");
+
+                if (previewBox.find("img").length === 0) {
+                    previewBox.html("");
+                }
+
+                // create an image tag and append it to preview box
+                var img = document.createElement("img");
+                img.classList.add("obj");
+                img.file = file;
+                img.className = "img-polaroid";
+                previewBox.append(img);
+
+                // use HTML5 fileReader to get base64 image src
+                var reader = new FileReader();
+                reader.onload = (function(aImg) {
+                    return function(e) {
+                        aImg.src = e.target.result;
+                    };
+                })(img);
+                reader.readAsDataURL(file);
             });
         }
 

@@ -71,9 +71,19 @@ module.exports = {
         var title = req.body.title,
             message = req.body.message,
             tags = req.body.tags,
-            contacts = req.body.contacts;
+            contacts = req.body.contacts,
+            images = req.body.images;
 
-        var bill = new Bill({ title: title, message: message, tags: tags, createdDate: new Date().getTime(), viewCount: 0, contacts: contacts });
+        var bill = new Bill({
+            title: title,
+            message: message,
+            tags: tags,
+            createdDate: new Date().getTime(),
+            viewCount: 0,
+            contacts: contacts,
+            images: images
+        });
+        
         bill.save();
         res.send(JSON.stringify(bill));
     }

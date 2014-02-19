@@ -42,6 +42,7 @@
                     // extend model with created date in desired format
                     var months = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"];
                     _model.set({
+                        imagesArray: _model.get("images") ? _model.get("images").split("_SEPARATOR_") : [],
                         createdDateFormatted: _date.getDate() + " " + months[_date.getMonth()] + " " +  _date.getFullYear() + ", " +
                             (_date.getHours() > 9 ? _date.getHours() : "0" + _date.getHours()) + " " +
                             (_date.getMinutes() > 9 ? _date.getMinutes() : "0" + _date.getMinutes())
@@ -61,6 +62,7 @@
                 // extend model with created date in desired format
                 var months = ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"];
                 model.set({
+                    imagesArray: model.get("images") ? model.get("images").split("_SEPARATOR_") : [],
                     createdDateFormatted: _date.getDate() + " " + months[_date.getMonth()] + " " +  _date.getFullYear() + ", " +
                         (_date.getHours() > 9 ? _date.getHours() : "0" + _date.getHours()) + " " +
                         (_date.getMinutes() > 9 ? _date.getMinutes() : "0" + _date.getMinutes())

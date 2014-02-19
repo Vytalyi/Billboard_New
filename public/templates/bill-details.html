@@ -12,6 +12,17 @@
     <div class="details-message"><%=this.model.get('message') %></div>
     <div class="details-contacts">Контактные данные: <%=this.model.get('contacts') %></div>
 
+    <% if (this.model.get('imagesArray').length > 0) { %>
+        <div class="details-photos">
+            <div class="photos-heading"><%= this.model.get('imagesArray').length %> фото:</div>
+            <div class="image-preview-box">
+                <% _.each(this.model.get('imagesArray'), function(image) { %>
+                <a href="<%=image %>" target="_blank"><img class="img-polaroid" src="<%=image %>" /></a>
+                <% }) %>
+            </div>
+        </div>
+    <% } %>
+
     <hr class="hor-separator">
 
     <div class="buttons">

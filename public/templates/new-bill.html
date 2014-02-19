@@ -40,6 +40,16 @@
         <textarea id="Contacts" name="contacts" tabindex="4" rows="4" value="<%=this.model.get('contacts') %>" class="input-xxlarge"></textarea>
     </fieldset>
 
+    <div class="height-10"></div>
+
+    <label for="fileInput">Фото
+        <a href="#" data-toggle="tooltip" title="Фотографии прилагаемые к объявлению">
+            <i class="icon-circle-arrow-up"></i>
+        </a>
+    </label>
+    <input type="file" id="fileInput" />
+    <div id="imagePreview" class="image-preview-box"><span>Нет фото</span></div>
+
     <div class="buttons">
         <a class="btn back-btn" href="#" data-navigation="true">< Вернуться назад</a>
         <button type="submit" tabindex="5" class="btn btn-primary publish">Опубликовать</button>

@@ -77,12 +77,18 @@
 #content .bill-wrapper.list .tags .tag { margin-bottom:5px; }
 /* ******** */
 
+/* New Bill */
 #content .alert-error { width:495px; }
 #content .alert-error.hidden { display:none; }
 #content #errorList { display:block; }
 #content input.error, #content textarea.error { border:1px solid #ff0000; }
 #content .publish { margin-left:20px; }
 #content #newBillForm .buttons { margin-top:20px; }
+#content input[type='file'] { line-height:20px; }
+#content .image-preview-box { min-height:110px; min-width:530px;  padding:5px; border:1px solid #a6a6a6; text-align:center; }
+#content .image-preview-box span { font-size:18px; line-height:110px; }
+#content .image-preview-box img { height:100px; width:auto; margin-right:20px; }
+/* ******* */
 
 /* Bill Details */
 #content .details-wrapper .tags { font-size:14px; }
@@ -92,6 +98,7 @@
 #content .details-created-date { margin-bottom:10px; }
 #content .details-message { margin: 20px 0; padding:5px 10px; border-left: 1px solid #a6a6a6;  }
 #content .details-contacts { }
+#content .details-photos { margin-top:15px; }
 /* ************ */
 
 #content { min-height:400px; padding:20px 0; }

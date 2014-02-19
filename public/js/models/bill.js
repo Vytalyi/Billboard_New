@@ -13,7 +13,8 @@
                 title: "",
                 message: "",
                 tags: "",
-                contacts: ""
+                contacts: "",
+                images: "" // images separated by '_SEPARATOR_'
             };
         },
 
