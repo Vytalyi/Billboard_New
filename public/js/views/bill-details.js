@@ -5,12 +5,10 @@
     'text!templates/bill-details.html'
 ], function ($, _, Backbone, pageHtml) {
 
-    var billDetailsView = Backbone.View.extend({
+    return Backbone.View.extend({
 
         el: $("#content"),
-
         viewID: "bill-details",
-
         template: _.template(pageHtml),
 
         initialize: function () {
@@ -25,7 +23,7 @@
             this.$el.html(this.template(viewModel));
 
             this.attachBackBtnHandler();
-            //this.attachImagePreview();
+            this.attachImagePreview();
             this.scrollTo();
 
             return this;
@@ -51,22 +49,13 @@
         },
 
         attachImagePreview: function() {
-            $(".image-preview-box a").each(function() {
-                $(this).on("click", function() {
-                    var img = $(this).find("img"),
-                        largeImage = $("<img>").attr("src", img.attr("src"));
+            var that = this;
+            $(".image-preview-box a").on("click", function(e) {
+                e.preventDefault();
 
-                    largeImage.attr("id", "largePreviewImage");
-                    largeImage.addClass(".img-polaroid")
-                    largeImage.appendTo($("body"));
-
-                    return false;
-                });
+                that.trigger("gallery", { imageSrc: $(this).attr("href") });
             });
         }
 
     });
-
-    return billDetailsView;
-
 });

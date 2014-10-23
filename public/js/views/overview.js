@@ -7,21 +7,18 @@
     'text!templates/overview.html'
 ], function ($, j1, _, Backbone, cookieHelper, pageHtml) {
 
-    var OverviewView = Backbone.View.extend({
+    return Backbone.View.extend({
 
         el: $("#content"),
-
         viewID: "overview",
-
         template: _.template(pageHtml),
+        defaultViewMode: "grid",
 
         initialize: function () {
-            // initialize
-            this.viewMode = cookieHelper.get("viewMode") || "grid";
+            this.viewMode = cookieHelper.get("viewMode") || this.defaultViewMode;
         },
 
         render: function () {
-
             this.$el.attr("data-view", this.viewID);
 
             var viewModel = this.collection;
@@ -73,7 +70,4 @@
         }
 
     });
-
-    return OverviewView;
-
 });

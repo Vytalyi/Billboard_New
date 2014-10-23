@@ -26,7 +26,7 @@
                     }
                 })
             }
-        }
+        };
     /* -------------------------------------------------- */
 
     /* Code below is for processing tags model/collection */
@@ -77,14 +77,14 @@
     var _loadingStart = function() {
         $("#content").html("");
         $("#content:not(.loading)").addClass("loading"); // loading starts
-    }
+    };
     var _loadingEnds = function() {
         $("#content.loading").removeClass("loading"); // loading ends
-    }
+    };
     /* -------------------------------------------------- */
 
 
-    var AppRouter = Backbone.Router.extend({
+    return Backbone.Router.extend({
         routes: {
             "": "index",
             "/": "index",
@@ -100,6 +100,15 @@
             _lastVisited = "/recent";
             this.navigate(_lastVisited, { trigger: true });
         },
+
+        overviewRecent: function () {
+            this.overview("recent");
+        },
+
+        overviewPopular: function () {
+            this.overview("popular");
+        },
+
         overview: function (sort) {
             _loadingStart();
             _lastVisited = "/" + sort;
@@ -114,8 +123,7 @@
                 })
             });
         },
-        overviewRecent: function () { this.overview("recent"); },
-        overviewPopular: function () { this.overview("popular"); },
+
         newBill: function () {
             _loadingStart();
             require(["views/new-bill"], function (NewBillView) {
@@ -134,6 +142,8 @@
         },
 
         billDetails: function(id) {
+            var that = this;
+
             _loadingStart();
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
@@ -142,12 +152,22 @@
                         backAction: _lastVisited
                     });
                     contentView.render();
+                    contentView.on("gallery", function(options) {
+                        that.gallery.call(that, options);
+                    });
                     _loadingEnds();
                 });
+            });
+        },
+
+        gallery: function(options) {
+            require(["views/gallery"], function (GalleryView) {
+                var galleryView = new GalleryView({
+                    currentImageSrc: options.imageSrc
+                });
+                galleryView.render();
             });
         }
 
     });
-
-    return AppRouter;
 });

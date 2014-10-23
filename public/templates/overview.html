@@ -1,6 +1,6 @@
 ﻿<div class="row-fluid">
-    <div class="span12">
-        <div class="btn-group pull-right">
+    <div class="span12 centered">
+        <div class="btn-group">
             <button class="btn <%= this.collection.mode == 'grid' ? 'active' : '' %>" data-viewmode="grid"><i class="icon-th"></i></button>
             <button class="btn <%= this.collection.mode == 'list' ? 'active' : '' %>" data-viewmode="list"><i class="icon-th-list"></i></button>
         </div>
@@ -22,7 +22,7 @@
                 <div class="created-date">от <%= item.get("createdDateFormatted") %></span></div>
                 <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>
                 <hr class="hor-separator">
-                <a class="message" href="bill-details/<%= item.get('_id') %>" data-toggle="tooltip" title="Нажмите чтобы посмотреть подробнее" data-navigation="true"><%= item.get("message") %></a>
+                <a class="message" href="bill-details/<%= item.get('_id') %>" data-navigation="true"><%= item.get("message") %></a>
                 <div class="contacts">Контакты: <%= item.get("contacts") %></div>
             </div>
         <% }); %>
@@ -31,7 +31,7 @@
             <div class="bill">
                 <div class="left">
                     <a class="title" data-navigation="true" data-toggle="tooltip" title="<%= item.get('title')%>" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a>
-                    <a class="message" href="bill-details/<%= item.get('_id') %>" data-toggle="tooltip" title="Нажмите чтобы посмотреть подробнее" data-navigation="true"><%= item.get("message") %></a>
+                    <a class="message" href="bill-details/<%= item.get('_id') %>" data-navigation="true"><%= item.get("message") %></a>
                     <div class="contacts">Контакты: <%= item.get("contacts") %></div>
                 </div>
                 <div class="right">

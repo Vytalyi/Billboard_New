@@ -1,5 +1,10 @@
 ﻿body { background: #e8e7e5; }
+.centered { text-align: center; }
 #content.loading { background-image: url('/css/loading.gif'); background-position: center center; background-repeat: no-repeat; }
+
+/* Elements shared across all pages */
+#topNavWrapper { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; }
+.container { margin-top: 60px; }
 
 
 /* Grid view */
@@ -69,6 +74,14 @@
 #content .details-photos { margin-top:15px; position:relative; }
 #largePreviewImage { width:940px; height:auto; position:absolute; bottom:120px; margin: 0 auto; }
 
+
+/* Gallery */
+#galleryView {  }
+#galleryView .overlay { position: fixed; left: 0; right: 0; bottom: 0; top: 0; z-index: 10001; background:#000; opacity: 0.5; cursor: pointer; }
+#galleryView .gallery-dialog { position: absolute; top: 10%; left: 10%; right: 10%; padding-bottom: 40px; background: white; z-index: 10002; border-radius: 10px; font-size: 1.5em; }
+#galleryView .gallery-dialog .dialog-title { height: 40px; padding: 5px; border-bottom: 1px solid #e8e7e5; }
+#galleryView .gallery-dialog .dialog-title p { margin: 0; line-height: 40px; text-align: center; }
+#galleryView .gallery-dialog .zoom-image-wrapper { text-align:center; }
 
 #content { min-height:400px; padding:20px 0; }
 #content .tags { overflow:hidden; font-size:12px;margin:3px 0; }
