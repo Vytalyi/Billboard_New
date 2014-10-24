@@ -23,6 +23,7 @@
             this.$el.append(this.template(viewModel));
 
             this.initializeGallery();
+            this.applyGalleryStyles();
 
             return this;
         },
@@ -32,6 +33,14 @@
 
             wrapper.on("click", ".overlay", function() {
                 wrapper.remove();
+            });
+        },
+
+        applyGalleryStyles: function() {
+            var windowHeight = $(window).height();
+
+            $("#galleryView").find(".zoom-image-wrapper").css({
+                maxHeight: (windowHeight - windowHeight*0.2) + "px"
             });
         }
 

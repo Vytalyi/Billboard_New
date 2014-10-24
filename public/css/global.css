@@ -1,4 +1,4 @@
-﻿body { background: #e8e7e5; }
+﻿body { background: #e8e7e5; font-size:14px; }
 .centered { text-align: center; }
 #content.loading { background-image: url('/css/loading.gif'); background-position: center center; background-repeat: no-repeat; }
 
@@ -18,13 +18,13 @@
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
     box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-#content .bill-wrapper.grid .bill .title { display:inline-block; height:20px; overflow:hidden; font-weight:bold; word-break: break-all; text-decoration: none; }
+#content .bill-wrapper.grid .bill .title { display:inline-block; height:20px; overflow:hidden; font-weight:bold; word-break: break-all; text-decoration: none; font-size: 1.1em; }
 #content .bill-wrapper.grid .bill .created-date { font-weight: normal; font-style:italic; display:inline-block; }
-#content .bill-wrapper.grid .bill .message { display:block; color:#000000; text-decoration:none; height:150px;overflow:hidden; padding: 2px; font-size: 13px; line-height: 15px; word-break:break-all; }
+#content .bill-wrapper.grid .bill .message { display:block; color:#000000; text-decoration:none; height:150px;overflow:hidden; padding: 2px; line-height: 1.1em; word-break:break-all; }
 #content .bill-wrapper.grid .bill .views { display:inline-block; float:right; color:#000000; text-decoration:none; }
 #content .bill-wrapper.grid .bill .contacts { height:20px; overflow:hidden; }
 #content .bill-wrapper.grid .hor-separator { border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
-#content .bill-wrapper.grid .tags { overflow:hidden; font-size:12px;margin:0; height:26px; }
+#content .bill-wrapper.grid .tags { overflow:hidden; margin:0; height:26px; }
 #content .bill-wrapper.grid .bill:hover .message-link {  }
 
 
@@ -41,12 +41,12 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5); }
 #content .bill-wrapper.list .left { width: 640px; float:left; border-right:1px solid #a6a6a6; padding-right:10px; }
 #content .bill-wrapper.list .right { width: 250px; float:right; }
-#content .bill-wrapper.list .bill .title { display:inline-block; float:left; overflow:hidden;  height:20px; font-weight:bold; word-break: break-all; text-decoration: none; margin:0 60px 0 0; }
+#content .bill-wrapper.list .bill .title { display:inline-block; float:left; overflow:hidden;  height:20px; font-weight:bold; word-break: break-all; text-decoration: none; margin:0 60px 0 0; font-size: 1.1em; }
 #content .bill-wrapper.list .bill .created-date { font-weight: normal; float:left; font-style:italic; line-height:20px; margin:0; }
-#content .bill-wrapper.list .bill .message { clear:both; display:block; color:#000000; text-decoration:none; padding:0; font-size: 13px; line-height: 15px; word-break:break-all; }
+#content .bill-wrapper.list .bill .message { clear:both; display:block; color:#000000; text-decoration:none; padding:0; line-height: 15px; word-break:break-all; }
 #content .bill-wrapper.list .bill .views { color:#000000; text-decoration:none; float:right; }
 #content .bill-wrapper.list .bill .contacts { }
-#content .bill-wrapper.list .tags { overflow:hidden; clear:both; font-size:12px; margin:5px 0; float:left; }
+#content .bill-wrapper.list .tags { overflow:hidden; clear:both; margin:5px 0; float:left; }
 #content .bill-wrapper.list .tags .tag { margin-bottom:5px; }
 
 
@@ -64,10 +64,10 @@
 
 
 /* Bill Details */
-#content .details-wrapper .tags { font-size:14px; }
+#content .details-wrapper .tags { font-size:1.1em; }
 #content .details-wrapper .buttons { margin-top: 20px; }
 #content .details-wrapper  .hor-separator { clear:both; border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
-#content .details-title { margin-bottom:10px; font-size:16px; }
+#content .details-title { margin-bottom:10px; font-size:1.2em; }
 #content .details-created-date { margin-bottom:10px; }
 #content .details-message { margin: 20px 0; padding:5px 10px; border-left: 1px solid #a6a6a6;  }
 #content .details-contacts { }
@@ -78,19 +78,17 @@
 /* Gallery */
 #galleryView {  }
 #galleryView .overlay { position: fixed; left: 0; right: 0; bottom: 0; top: 0; z-index: 10001; background:#000; opacity: 0.5; cursor: pointer; }
-#galleryView .gallery-dialog { position: absolute; top: 10%; left: 10%; right: 10%; padding-bottom: 40px; background: white; z-index: 10002; border-radius: 10px; font-size: 1.5em; }
+#galleryView .gallery-dialog { position: absolute; top: 10%; left: 10%; right: 10%; padding-bottom: 40px; padding-left: 40px; padding-right: 40px; background: white; z-index: 10002; border-radius: 10px; font-size: 1.5em; }
 #galleryView .gallery-dialog .dialog-title { height: 40px; padding: 5px; border-bottom: 1px solid #e8e7e5; }
 #galleryView .gallery-dialog .dialog-title p { margin: 0; line-height: 40px; text-align: center; }
-#galleryView .gallery-dialog .zoom-image-wrapper { text-align:center; }
+#galleryView .gallery-dialog .zoom-image-wrapper { text-align:center; position: relative; }
+#galleryView .gallery-dialog .zoom-image-wrapper img { width: 100%; height: 100%; }
 
 #content { min-height:400px; padding:20px 0; }
-#content .tags { overflow:hidden; font-size:12px;margin:3px 0; }
+#content .tags { overflow:hidden; margin:3px 0; }
 #content .tags .tag { float:left; padding:3px 5px; margin-right:10px; background:#08c; color:#ffffff; }
 #content .height-10 { height:10px; }
 
-
-/* customize jQuery UI Tooltip */
-.ui-tooltip.ui-widget { font-size:12px; }
 
 /* customize Twitter Bootstrap navbar */
 .navbar-inner { background:#303030; border-radius:0; filter:""; padding-top:5px; padding-bottom:5px; }
