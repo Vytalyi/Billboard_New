@@ -37,10 +37,11 @@
         },
 
         applyGalleryStyles: function() {
-            var windowHeight = $(window).height();
+            var windowHeight = $(window).height(),
+                maxHeight = (windowHeight - windowHeight*0.2);
 
             $("#galleryView").find(".zoom-image-wrapper").css({
-                maxHeight: (windowHeight - windowHeight*0.2) + "px"
+                height: maxHeight + "px"
             });
         }
 

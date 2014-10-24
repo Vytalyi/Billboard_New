@@ -78,11 +78,11 @@
 /* Gallery */
 #galleryView {  }
 #galleryView .overlay { position: fixed; left: 0; right: 0; bottom: 0; top: 0; z-index: 10001; background:#000; opacity: 0.5; cursor: pointer; }
-#galleryView .gallery-dialog { position: absolute; top: 10%; left: 10%; right: 10%; padding-bottom: 40px; padding-left: 40px; padding-right: 40px; background: white; z-index: 10002; border-radius: 10px; font-size: 1.5em; }
+#galleryView .gallery-dialog { position: absolute; top: 5%; left: 10%; right: 10%; padding-bottom: 40px; padding-left: 40px; padding-right: 40px; background: white; z-index: 10002; border-radius: 10px; font-size: 1.5em; }
 #galleryView .gallery-dialog .dialog-title { height: 40px; padding: 5px; border-bottom: 1px solid #e8e7e5; }
 #galleryView .gallery-dialog .dialog-title p { margin: 0; line-height: 40px; text-align: center; }
-#galleryView .gallery-dialog .zoom-image-wrapper { text-align:center; position: relative; }
-#galleryView .gallery-dialog .zoom-image-wrapper img { width: 100%; height: 100%; }
+#galleryView .gallery-dialog .zoom-image-wrapper { text-align:center; position: relative; width: 100%; overflow:hidden; }
+#galleryView .gallery-dialog .zoom-image-wrapper img { height: 100%; width: auto; }
 
 #content { min-height:400px; padding:20px 0; }
 #content .tags { overflow:hidden; margin:3px 0; }
