@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>Billboard</title>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <form action="/login" method="post">
+        <input type="text" class="form-control" name="email">
+        <input type="password" class="form-control" name="password">
+
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+
+    <a href="/logout">Logout</a>
+
+    {{user.username}}
+</body>
+</html>

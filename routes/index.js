@@ -1,11 +1,13 @@
 var tags = require('./tags')
-    , bills = require('./bills');
+    , bills = require('./bills')
+    , users = require('./users');
 
 var routerAPI = {
 
 	init: function (app) {
 		this.app = app;
 
+        users.init(); // populate users
         tags.init(); // populate tags
         bills.init(); // populate bills
 
@@ -23,11 +25,27 @@ var routerAPI = {
         app.post('/bills', bills.create);
 
         app.get('/tags', tags.getAll);
+
+        app.get('/login', this.getLogin);
+        app.post('/login', users.doLogin);
+        app.get('/logout', users.doLogout);
 	},
 
 	getIndex: function (req, res) {
-		res.render('index');
-	}
+        var viewModel = {};
+        if (req.session.user) {
+            viewModel.user = req.session.user;
+        }
+		res.render('index', viewModel);
+	},
+
+    getLogin: function(req, res) {
+        var viewModel = {};
+        if (req.session.user) {
+            viewModel.user = req.session.user;
+        }
+        res.render('login', viewModel);
+    }
 
 };
 
