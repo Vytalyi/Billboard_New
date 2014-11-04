@@ -16,7 +16,7 @@ var routerAPI = {
         app.get('/all', this.getIndex);
         app.get('/recent', this.getIndex);
         app.get('/popular', this.getIndex);
-        app.get('/new-bill', this.getIndex);
+        app.get('/new-bill', this.getIndexAuthorizedOnly);
         app.get('/bill-details/:id', this.getIndex);
 
         /* respond with JSON */
@@ -26,6 +26,7 @@ var routerAPI = {
 
         app.get('/tags', tags.getAll);
 
+        app.get('/users/:id', users.get);
         app.get('/login', this.getLogin);
         app.post('/login', users.doLogin);
         app.get('/logout', users.doLogout);
@@ -38,6 +39,16 @@ var routerAPI = {
         }
 		res.render('index', viewModel);
 	},
+
+    getIndexAuthorizedOnly: function (req, res) {
+        var viewModel = {};
+        if (req.session.user) {
+            viewModel.user = req.session.user;
+            res.render('index', viewModel);
+        } else {
+            res.redirect('/login');
+        }
+    },
 
     getLogin: function(req, res) {
         var viewModel = {};

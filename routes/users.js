@@ -13,6 +13,23 @@ module.exports = {
 
     },
 
+    get: function (req, res) {
+        var id = req.params.id,
+            query;
+
+        if (req.session.user && id === "current") {
+            query = User.findOne({ userID: req.session.user.userID });
+        } else {
+            query = User.findOne({ userID: id });
+        }
+
+        query.select('userID username email');
+
+        query.exec(function (err, user) {
+            res.send(JSON.stringify(user));
+        });
+    },
+
     doLogin: function(req, res) {
         var email = req.body.email,
             password = req.body.password,

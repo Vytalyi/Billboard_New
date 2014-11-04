@@ -82,7 +82,7 @@
                     tags: form.find("[name='tags']").val(),
                     contacts: form.find("[name='contacts']").val(),
                     images: form.find(".image-preview-box img").map(function() {
-                        return $(this).attr("src")
+                        return $(this).attr("src");
                     }).get().join("_SEPARATOR_")
                 }, { silent: true });
 

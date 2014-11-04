@@ -1,5 +1,6 @@
 ﻿<div class="details-wrapper">
     <div class="details-title"><b><%=this.model.get('title') %></b></div>
+    <div class="details-author">Автор: <%= this.model.get("userModel").get("username") %> (<%= this.model.get("userModel").get("email") %>)</div>
     <div class="details-views">Просмотров: <%= this.model.get("viewCount") %></div>
     <div class="details-created-date">Опубликовано: <i><%= this.model.get("createdDateFormatted") %></i></div>
     <div class="tags">

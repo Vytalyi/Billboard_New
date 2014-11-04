@@ -8,8 +8,9 @@
     'models/tag',
     'models/tag-collection',
     'models/bill',
-    'models/bill-collection'
-], function ($, _, Backbone, TagModel, TagCollection, BillModel, BillCollection) {
+    'models/bill-collection',
+    'models/user'
+], function ($, _, Backbone, TagModel, TagCollection, BillModel, BillCollection, UserModel) {
 
     /* Code below is for processing tags model/collection */
     var _tags = null,
@@ -36,7 +37,7 @@
             data: { sort: sort },
             success: function (response, models) {
                 for (var i=0, len=response.models.length; i<len; i++) {
-                    var _model = response.models[i]
+                    var _model = response.models[i],
                         _date = new Date(_model.get("createdDate"));
 
                     // extend model with created date in desired format
@@ -67,10 +68,36 @@
                         (_date.getMinutes() > 9 ? _date.getMinutes() : "0" + _date.getMinutes())
                 });
 
-                callback(model);
+                _extendBillDetailsWithUserInfo(model, callback);
             }
         });
 
+    };
+    var _extendBillDetailsWithUserInfo = function(billModel, callback) {
+        var user = new UserModel({ userID: billModel.get("createdBy") });
+        user.fetch({
+            error: function() {
+                callback(billModel);
+            },
+            success: function(model, response) {
+                billModel.set({ userModel: model });
+                callback(billModel);
+            }
+        });
+    };
+
+    var _currentUser = null;
+    var _getCurrentUser = function(callback) {
+        if (_currentUser) {
+            callback(_currentUser);
+        } else {
+            var user = new UserModel({ userID: "current" });
+            user.fetch({
+                success: function(model, response) {
+                    callback(model);
+                }
+            });
+        }
     };
 
     var _lastVisited = "";
@@ -126,7 +153,7 @@
 
         newBill: function () {
             _loadingStart();
-            require(["views/new-bill"], function (NewBillView) {
+            require(["views/new-bill", "models/user"], function (NewBillView) {
                 _getAllTags(function(tags) {
                     var bill = new BillModel();
 
@@ -137,7 +164,7 @@
                     });
                     contentView.render();
                     _loadingEnds();
-                })
+                });
             });
         },
 
@@ -147,6 +174,7 @@
             _loadingStart();
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
+                    debugger;
                     var contentView = new DetailsView({
                         model: bill,
                         backAction: _lastVisited

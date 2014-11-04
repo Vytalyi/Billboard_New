@@ -3,7 +3,7 @@
   'backbone'
 ], function ($, Backbone) {
 
-    var BillModel = Backbone.Model.extend({
+    return Backbone.Model.extend({
         idAttribute: "_id",
 
         urlRoot: "/bills",
@@ -13,6 +13,7 @@
                 title: "",
                 message: "",
                 tags: "",
+                createdBy: "",
                 contacts: "",
                 images: "" // images separated by '_SEPARATOR_'
             };
@@ -64,7 +65,4 @@
         }
 
     });
-
-    return BillModel;
-
 });
