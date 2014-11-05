@@ -91,5 +91,24 @@ module.exports = {
 
         bill.save();
         res.send(JSON.stringify(bill));
+    },
+
+    update: function(req, res) {
+        var id = req.params.id,
+            title = req.body.title,
+            message = req.body.message,
+            tags = req.body.tags,
+            contacts = req.body.contacts,
+            images = req.body.images;
+
+        Bill.update({ _id: id }, { $set: {
+            title: title,
+            message: message,
+            tags: tags,
+            contacts: contacts,
+            images: images
+        }}, function(err, bill) {
+            res.send(JSON.stringify({ status: "OK" }));
+        });
     }
-}
+};

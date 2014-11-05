@@ -23,7 +23,6 @@
                 <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>
                 <hr class="hor-separator">
                 <a class="message" href="bill-details/<%= item.get('_id') %>" data-navigation="true"><%= item.get("message") %></a>
-                <div class="contacts">Контакты: <%= item.get("contacts") %></div>
             </div>
         <% }); %>
     <% } else {%>
@@ -32,7 +31,6 @@
                 <div class="left">
                     <a class="title" data-navigation="true" data-toggle="tooltip" title="<%= item.get('title')%>" href="bill-details/<%= item.get('_id') %>"><%= item.get("title")%></a>
                     <a class="message" href="bill-details/<%= item.get('_id') %>" data-navigation="true"><%= item.get("message") %></a>
-                    <div class="contacts">Контакты: <%= item.get("contacts") %></div>
                 </div>
                 <div class="right">
                     <a class="views" data-toggle="tooltip" title="Просмотры"><i class="icon-time"></i>&nbsp;<%= item.get("viewCount") %></a>

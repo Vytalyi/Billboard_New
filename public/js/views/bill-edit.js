@@ -1,16 +1,15 @@
 ﻿define([
     'jquery',
     "jqueryuiautocomplete",
-    "jqueryuitooltip",
     'underscore',
     'backbone',
-    'text!templates/new-bill.html'
-], function ($, j1, j2, _, Backbone, pageHtml) {
+    'text!templates/bill-edit.html'
+], function ($, j1, _, Backbone, pageHtml) {
 
     return Backbone.View.extend({
 
         el: $("#content"),
-        viewID: "new-bill",
+        viewID: "bill-edit",
         template: _.template(pageHtml),
 
         render: function () {
@@ -22,12 +21,22 @@
 
             this.initTagAutocomplete();
             this.overrideFormSubmit();
-            this.initializeTooltips();
             this.attachBackBtnHandler();
-            this.scrollTo();
             this.initFileUpload();
+            this.scrollTo();
 
             return this;
+        },
+
+        attachBackBtnHandler: function() {
+            var that = this;
+            this.$el.find("a.back-btn[data-navigation=true]").on("click", function() {
+                var lastVisiteAction = that.options.backAction || "/";
+                if (lastVisiteAction != "") {
+                    window.app_router.navigate(lastVisiteAction, { trigger: true });
+                }
+                return false;
+            });
         },
 
         initTagAutocomplete: function() {
@@ -66,7 +75,7 @@
 
         overrideFormSubmit: function() {
             var that = this,
-                form = $("#newBillForm");
+                form = $("#updateBillForm");
 
             form.on("submit", function(e) {
                 e.preventDefault();
@@ -85,7 +94,7 @@
 
                 that.model.save(that.model.attributes, {
                     success: function(model, response) {
-                        window.app_router.navigate("/recent", { trigger: true });
+                        window.app_router.navigate("/bill-details/" + that.model.get("_id"), { trigger: true });
                     },
                     error: function(model, errors) {
                         // hide error message if exists
@@ -119,33 +128,6 @@
             })
         },
 
-        initializeTooltips: function() {
-            setTimeout(function () {
-                $("a[data-toggle=tooltip]").tooltip({
-                    // options
-                });
-            }, 100);
-        },
-
-        attachBackBtnHandler: function() {
-            var that = this;
-            this.$el.find("a[data-navigation=true]").on("click", function() {
-                var lastVisiteAction = that.options.backAction || "/";
-                if (lastVisiteAction != "") {
-                    window.app_router.navigate(lastVisiteAction, { trigger: true });
-                }
-                return false;
-            });
-        },
-
-        scrollTo: function () {
-            $("html, body").animate({
-                scrollTop: "475"
-            }, 500, function() {
-                // done
-            });
-        },
-
         initFileUpload: function() {
             $('#fileInput').on("change", function(e) {
                 var file = this.files[0], // get fine from input
@@ -170,6 +152,14 @@
                     };
                 })(img);
                 reader.readAsDataURL(file);
+            });
+        },
+
+        scrollTo: function () {
+            $("html, body").animate({
+                scrollTop: "475"
+            }, 500, function() {
+                // done
             });
         }
 

@@ -18,10 +18,12 @@ var routerAPI = {
         app.get('/popular', this.getIndex);
         app.get('/new-bill', this.getIndexAuthorizedOnly);
         app.get('/bill-details/:id', this.getIndex);
+        app.get('/bill-details/:id/edit', this.getIndexAuthorizedOnly);
 
         /* respond with JSON */
         app.get('/bills', bills.getAll);
         app.get('/bills/:id', bills.get);
+        app.put('/bills/:id', bills.update);
         app.post('/bills', bills.create);
 
         app.get('/tags', tags.getAll);

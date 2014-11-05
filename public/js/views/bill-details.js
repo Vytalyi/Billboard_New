@@ -31,7 +31,7 @@
 
         attachBackBtnHandler: function() {
             var that = this;
-            this.$el.find("a[data-navigation=true]").on("click", function() {
+            this.$el.find("a.back-btn[data-navigation=true]").on("click", function() {
                 var lastVisiteAction = that.options.backAction || "/";
                 if (lastVisiteAction != "") {
                     window.app_router.navigate(lastVisiteAction, { trigger: true });

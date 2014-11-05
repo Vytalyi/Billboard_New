@@ -12,13 +12,14 @@
     'models/user'
 ], function ($, _, Backbone, TagModel, TagCollection, BillModel, BillCollection, UserModel) {
 
-    /* Code below is for processing tags model/collection */
-    var _tags = null,
-        _getAllTags = function _getAllTags(callback) {
+    /* TAGS */
+    /* *********************** */
+    var _getAllTags = function(callback) {
+        var _tags = null;
+        return (function() {
             if (_tags) {
                 callback(_tags);
-            }
-            else {
+            } else {
                 _tags = new TagCollection();
                 _tags.fetch({
                     success: function (response, models) {
@@ -27,11 +28,13 @@
                     }
                 })
             }
-        };
-    /* -------------------------------------------------- */
+        })();
+    };
 
-    /* Code below is for processing tags model/collection */
-    var _getAllBills = function _getAllBills(sort, callback) {
+
+    /* BILLS */
+    /* *********************** */
+    var _getAllBillsSorted = function(sort, callback) {
         var _bills = new BillCollection(sort);
         _bills.fetch({
             data: { sort: sort },
@@ -72,20 +75,23 @@
             }
         });
 
-    };
-    var _extendBillDetailsWithUserInfo = function(billModel, callback) {
-        var user = new UserModel({ userID: billModel.get("createdBy") });
-        user.fetch({
-            error: function() {
-                callback(billModel);
-            },
-            success: function(model, response) {
-                billModel.set({ userModel: model });
-                callback(billModel);
-            }
-        });
+        function _extendBillDetailsWithUserInfo(billModel, callback) {
+            var user = new UserModel({ userID: billModel.get("createdBy") });
+            user.fetch({
+                error: function() {
+                    callback(billModel);
+                },
+                success: function(model, response) {
+                    billModel.set({ userModel: model });
+                    callback(billModel);
+                }
+            });
+        }
     };
 
+
+    /* USERS */
+    /* *********************** */
     var _currentUser = null;
     var _getCurrentUser = function(callback) {
         if (_currentUser) {
@@ -100,6 +106,7 @@
         }
     };
 
+
     var _lastVisited = "";
     var _loadingStart = function() {
         $("#content").html("");
@@ -108,7 +115,6 @@
     var _loadingEnds = function() {
         $("#content.loading").removeClass("loading"); // loading ends
     };
-    /* -------------------------------------------------- */
 
 
     return Backbone.Router.extend({
@@ -120,7 +126,8 @@
             "popular": "overviewPopular",
 
             "new-bill": "newBill",
-            "bill-details/:id": "billDetails"
+            "bill-details/:id": "billDetails",
+            "bill-details/:id/edit": "billEdit"
         },
 
         index: function () {
@@ -140,7 +147,7 @@
             _loadingStart();
             _lastVisited = "/" + sort;
             require(["views/overview"], function (OverviewView) {
-                _getAllBills(sort || "no", function(bills) {
+                _getAllBillsSorted(sort || "no", function(bills) {
                     var contentView = new OverviewView({
                         collection: bills,
                         sort: sort
@@ -153,7 +160,7 @@
 
         newBill: function () {
             _loadingStart();
-            require(["views/new-bill", "models/user"], function (NewBillView) {
+            require(["views/new-bill"], function (NewBillView) {
                 _getAllTags(function(tags) {
                     var bill = new BillModel();
 
@@ -174,7 +181,6 @@
             _loadingStart();
             require(["views/bill-details"], function (DetailsView) {
                 _getBillDetails(id, function(bill) {
-                    debugger;
                     var contentView = new DetailsView({
                         model: bill,
                         backAction: _lastVisited
@@ -184,6 +190,25 @@
                         that.gallery.call(that, options);
                     });
                     _loadingEnds();
+                });
+            });
+        },
+
+        billEdit: function(id) {
+            var that = this;
+
+            _loadingStart();
+            require(["views/bill-edit"], function (EditView) {
+                _getBillDetails(id, function(bill) {
+                    _getAllTags(function(tags) {
+                        var contentView = new EditView({
+                            model: bill,
+                            tags: tags,
+                            backAction: "/bill-details/" + bill.get("_id")
+                        });
+                        contentView.render();
+                        _loadingEnds();
+                    });
                 });
             });
         },
