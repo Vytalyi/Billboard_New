@@ -23,6 +23,7 @@
             this.overrideFormSubmit();
             this.initializeTooltips();
             this.attachBackBtnHandler();
+            this.attachDeleteTaghandler();
             this.scrollTo();
             this.initFileUpload();
 
@@ -36,7 +37,7 @@
 
             input.on("change", function() {
                 var selectedOption = $(this).find(":selected"),
-                    tag = $("<div/>").addClass("tag").html(selectedOption.html());
+                    tag = $("<div/>").addClass("tag").html(selectedOption.html() + " <i>(X)</i>");
 
                 // put tag on the UI
                 tagsContainer.append(tag);
@@ -126,6 +127,25 @@
                     window.app_router.navigate(lastVisiteAction, { trigger: true });
                 }
                 return false;
+            });
+        },
+
+        attachDeleteTaghandler: function() {
+            $("#Tags").on("click", ".tag", function() {
+                var self = $(this),
+                    tagsHiddenInput = $("#TagsConcated"),
+                    regEx = new RegExp(self.text().replace(/\s\(X\)/gi, "")),
+                    newVal = tagsHiddenInput.val();
+
+                newVal = newVal.replace(regEx, "");
+                newVal = newVal.replace(/,$/, "");
+                newVal = newVal.replace(/^,/, "");
+                newVal = newVal.replace(/,,/, ",");
+                newVal = $.trim(newVal);
+
+                tagsHiddenInput.val(newVal);
+                self.remove();
+
             });
         },
 

@@ -22,6 +22,7 @@
             this.overrideFormSubmit();
             this.attachBackBtnHandler();
             this.initFileUpload();
+            this.attachDeleteTaghandler();
             this.scrollTo();
 
             return this;
@@ -45,7 +46,7 @@
 
             input.on("change", function() {
                 var selectedOption = $(this).find(":selected"),
-                    tag = $("<div/>").addClass("tag").html(selectedOption.html());
+                    tag = $("<div/>").addClass("tag").html(selectedOption.html() + " <i>(X)</i>");
 
                 // put tag on the UI
                 tagsContainer.append(tag);
@@ -143,6 +144,25 @@
                     };
                 })(img);
                 reader.readAsDataURL(file);
+            });
+        },
+
+        attachDeleteTaghandler: function() {
+            $("#Tags").on("click", ".tag", function() {
+                var self = $(this),
+                    tagsHiddenInput = $("#TagsConcated"),
+                    regEx = new RegExp(self.text().replace(/\s\(X\)/gi, "")),
+                    newVal = tagsHiddenInput.val();
+
+                newVal = newVal.replace(regEx, "");
+                newVal = newVal.replace(/,$/, "");
+                newVal = newVal.replace(/^,/, "");
+                newVal = newVal.replace(/,,/, ",");
+                newVal = $.trim(newVal);
+
+                tagsHiddenInput.val(newVal);
+                self.remove();
+
             });
         },
 

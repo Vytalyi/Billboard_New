@@ -24,7 +24,7 @@
             <div id="Tags" class="tags">
                 <% _.each(this.model.get("tags").split(","), function(tag) { %>
                     <% if (tag.replace(/\s/g, "") !== "") { %>
-                        <div class="tag"><%= tag %></div>
+                        <div class="tag"><%= tag %> <i class="delete-tag">(X)</i></div>
                     <% } %>
                 <% }); %>
             </div>

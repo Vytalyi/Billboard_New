@@ -50,6 +50,7 @@
 
 /* New Bill */
 #content .alert-error { width:495px; }
+#content #newBillForm .tags .tag { cursor: pointer; }
 #content .alert-error.hidden { display:none; }
 #content #errorList { display:block; }
 #content input.error, #content textarea.error { border:1px solid #ff0000; }
@@ -75,6 +76,7 @@
 
 /* Bill Edit */
 #content .bill-edit-wrapper .tags { font-size:1.1em; margin-bottom: 1em; }
+#content .bill-edit-wrapper .tags .tag { cursor: pointer; }
 #content .bill-edit-wrapper .buttons { margin-top: 20px; }
 #content .bill-edit-wrapper  .hor-separator { clear:both; border-top:1px solid #a6a6a6; border-bottom:1px solid #a6a6a6; margin:10px 0; }
 #content .bill-edit-wrapper .details-title { margin-bottom:10px; font-size:1.2em; }
