@@ -12,21 +12,26 @@
                 <i class="icon-circle-arrow-up"></i>
             </a>
         </label>
-        <input id="Title" name="title" tabindex="1" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" placeholder="Введите заголовок…" />
+        <input id="Title" name="title" tabindex="1" type="text" value="<%=this.model.get('title') %>" class="span10" placeholder="Введите заголовок…" />
 
         <label for="Content">Текст
             <a href="#" data-toggle="tooltip" title="Подробное содержание объявления. Размер неограничен.">
                 <i class="icon-circle-arrow-up"></i>
             </a>
         </label>
-        <textarea id="Content" name="message" tabindex="2" rows="10" value="<%=this.model.get('message') %>" placeholder="Введите текст сообщения" class="input-xxlarge"></textarea>
+        <textarea id="Content" name="message" tabindex="2" rows="10" value="<%=this.model.get('message') %>" placeholder="Введите текст сообщения" class="span10"></textarea>
 
         <label for="Tag">Ключевые слова
             <a href="#" data-toggle="tooltip" title="Ключевые слова по которым пользователь сможет определить тематику объявления. Необходимо указать как минимум одно ключевое слово.">
                 <i class="icon-circle-arrow-up"></i>
             </a>
         </label>
-        <input id="Tag" name="tag" tabindex="3" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />
+        <select id="Tag" name="tag" tabindex="3" class="span10">
+            <option value="">Введите ключевое слово…</option>
+            <% _.each(this.options.tags, function(tag) { %>
+                <option value="<%= tag.tagID %>"><%= tag.name %></option>
+            <% }); %>
+        </select>
         <div id="Tags" class="tags"></div>
         <input id="TagsConcated" name="tags" type="hidden" value="<%=this.model.get('tags') %>" />
 
@@ -37,7 +42,7 @@
                 <i class="icon-circle-arrow-up"></i>
             </a>
         </label>
-        <textarea id="Contacts" name="contacts" tabindex="4" rows="4" value="<%=this.model.get('contacts') %>" placeholder="Введите ваши контактные данные" class="input-xxlarge"></textarea>
+        <textarea id="Contacts" name="contacts" tabindex="4" rows="4" value="<%=this.model.get('contacts') %>" placeholder="Введите ваши контактные данные" class="span10"></textarea>
     </fieldset>
 
     <div class="height-10"></div>

@@ -1,11 +1,10 @@
 ﻿define([
     'jquery',
-    "jqueryuiautocomplete",
     "jqueryuitooltip",
     'underscore',
     'backbone',
     'text!templates/new-bill.html'
-], function ($, j1, j2, _, Backbone, pageHtml) {
+], function ($, j2, _, Backbone, pageHtml) {
 
     return Backbone.View.extend({
 
@@ -20,7 +19,7 @@
 
             this.$el.html(this.template(viewModel));
 
-            this.initTagAutocomplete();
+            this.initTagsSelection();
             this.overrideFormSubmit();
             this.initializeTooltips();
             this.attachBackBtnHandler();
@@ -30,37 +29,29 @@
             return this;
         },
 
-        initTagAutocomplete: function() {
+        initTagsSelection: function() {
             var input = $("#Tag"),
                 tagsContainer = $("#Tags"),
                 tagsHiddenInput = $("#TagsConcated");
 
-            input.autocomplete({
-                minLength: 0,
-                source: $(this.options.tags).map(function() {
-                    return this.name
-                }).get(),
-                select: function(event, ui) {
-                    var tag = $("<div/>").addClass("tag").html(ui.item.value);
+            input.on("change", function() {
+                var selectedOption = $(this).find(":selected"),
+                    tag = $("<div/>").addClass("tag").html(selectedOption.html());
 
-                    // append new tag and clear text field so user can type new one
-                    tagsContainer.append(tag);
-                    setTimeout(function() {
-                        input.val("").blur();
-                    }, 0);
+                // put tag on the UI
+                tagsContainer.append(tag);
 
-                    // concat tags and save it to hidden field
-                    var str = "";
-                    if (tagsHiddenInput.val() === "") {
-                        str = ui.item.value;
-                    } else {
-                        str = tagsHiddenInput.val() + ", " + ui.item.value;
-                    }
-
-                    tagsHiddenInput.val(str);
+                // concat tags and save it to hidden field
+                var str = "";
+                if (tagsHiddenInput.val() === "") {
+                    str = selectedOption.html();
+                } else {
+                    str = tagsHiddenInput.val() + ", " + selectedOption.html();
                 }
-            }).focus(function() {
-                $(this).autocomplete("search", "");
+                tagsHiddenInput.val(str);
+
+                // clear select so user will able to add another one tag
+                input.val("");
             });
         },
 
@@ -121,9 +112,9 @@
 
         initializeTooltips: function() {
             setTimeout(function () {
-                $("a[data-toggle=tooltip]").tooltip({
-                    // options
-                });
+                if ($.fn.tooltip) {
+                    $("a[data-toggle=tooltip]").tooltip({ });
+                }
             }, 100);
         },
 

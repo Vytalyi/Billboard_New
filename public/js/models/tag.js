@@ -3,10 +3,7 @@
   'backbone'
 ], function ($, Backbone) {
 
-    var TagModel = Backbone.Model.extend({
+    return Backbone.Model.extend({
         //idAttribute: "tagID"
     });
-
-    return TagModel;
-
 });

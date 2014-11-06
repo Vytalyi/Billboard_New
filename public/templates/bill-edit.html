@@ -9,13 +9,18 @@
             </div>
 
             <label for="Title">Заголовок</label>
-            <input id="Title" name="title" tabindex="1" type="text" value="<%=this.model.get('title') %>" class="input-xxlarge" />
+            <input id="Title" name="title" tabindex="1" type="text" value="<%=this.model.get('title') %>" class="span10" />
 
             <label for="Content">Текст</label>
-            <textarea id="Content" name="message" tabindex="2" rows="10" placeholder="Введите текст сообщения" class="input-xxlarge"><%=this.model.get('message') %></textarea>
+            <textarea id="Content" name="message" tabindex="2" rows="10" placeholder="Введите текст сообщения" class="span10"><%=this.model.get('message') %></textarea>
 
             <label for="Tag">Ключевые слова</label>
-            <input id="Tag" name="tag" tabindex="3" type="text" class="input-xxlarge" placeholder="Введите ключевое слово…" />
+            <select id="Tag" name="tag" tabindex="3" class="span10">
+                <option value="">Введите ключевое слово…</option>
+                <% _.each(this.options.tags, function(tag) { %>
+                    <option value="<%= tag.tagID %>"><%= tag.name %></option>
+                <% }); %>
+            </select>
             <div id="Tags" class="tags">
                 <% _.each(this.model.get("tags").split(","), function(tag) { %>
                     <% if (tag.replace(/\s/g, "") !== "") { %>
@@ -26,7 +31,7 @@
             <input id="TagsConcated" name="tags" type="hidden" value="<%=this.model.get('tags') %>" />
 
             <label for="Contacts">Контактная информация</label>
-            <textarea id="Contacts" name="contacts" tabindex="4" rows="4" class="input-xxlarge"><%=this.model.get('contacts') %></textarea>
+            <textarea id="Contacts" name="contacts" tabindex="4" rows="4" class="span10"><%=this.model.get('contacts') %></textarea>
 
             <% if (this.model.get('imagesArray').length > 0) { %>
                 <div class="details-photos">
