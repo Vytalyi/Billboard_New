@@ -16,6 +16,7 @@ db.once('open', function callback() {
 });
 
 
+
 /* App initializing */
 var app = express();
 
